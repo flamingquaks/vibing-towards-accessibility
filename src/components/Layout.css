@@ -1,0 +1,34 @@
+.layout {
+  min-height: 100vh;
+}
+
+.layout-nav {
+  background: #f8f9fa;
+  padding: 1rem 2rem;
+  border-bottom: 1px solid #e9ecef;
+}
+
+.home-link {
+  color: #007bff;
+  text-decoration: none;
+  font-weight: 500;
+  padding: 0.5rem 1rem;
+  border-radius: 6px;
+  transition: all 0.2s ease;
+  border: 2px solid transparent;
+}
+
+.home-link:hover {
+  background: #e3f2fd;
+  color: #0056b3;
+}
+
+.home-link:focus {
+  outline: none;
+  border-color: #007bff;
+  box-shadow: 0 0 0 2px rgba(0, 123, 255, 0.25);
+}
+
+.layout-content {
+  flex: 1;
+}
