@@ -19,6 +19,9 @@ npm run test
 
 # Run with UI interface
 npm run test:ui
+
+# Run tests with coverage
+npm run test:run -- --coverage
 ```
 
 ### 3. Run E2E Tests
@@ -39,10 +42,29 @@ npm run build
 npm run lint
 ```
 
+## 🤖 Automated CI/CD
+
+GitHub Actions automatically run tests on every push and pull request:
+
+### 📋 CI Workflows
+- **Unit Tests**: Runs on Node.js 18.x and 20.x, validates linting, tests, and build
+- **E2E Tests**: Runs Playwright tests for user workflows and accessibility
+- **PR Quality Check**: Comprehensive validation with automated feedback
+- **Full Test Suite**: Daily scheduled runs with cross-platform matrix testing
+
+### 🎯 Quality Gates
+All pull requests must pass:
+- ✅ 54 unit tests 
+- ✅ ESLint validation
+- ✅ TypeScript compilation
+- ✅ Production build
+- ✅ E2E accessibility tests
+
 ## 📁 Test Files Located At:
 - **Unit Tests**: `src/test/` (6 test files, 54 tests total)
 - **E2E Tests**: `tests/e2e/` (6 test files)
 - **Documentation**: `TESTING.md` (comprehensive guide)
+- **CI/CD**: `.github/workflows/` (4 workflow files)
 
 ## ✅ Test Coverage:
 - HomePage: 6 tests

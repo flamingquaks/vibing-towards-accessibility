@@ -142,20 +142,59 @@ The test suite includes comprehensive accessibility validation:
 Current test status:
 - ✅ **54 Unit Tests Passing** 
 - ✅ **Build Validation Passing**
-- 📋 **E2E Tests Ready** (requires Playwright browser installation)
+- ✅ **E2E Tests Ready** 
+- ✅ **CI/CD Pipeline Active**
 
-## Continuous Integration
+## Continuous Integration & Deployment
 
-The test suite is designed to run in CI environments:
-- Unit tests run on every commit
-- E2E tests can be configured for deployment validation
-- Build verification ensures production readiness
+### 🤖 Automated GitHub Actions
+
+The repository includes comprehensive CI/CD workflows:
+
+#### 📋 Available Workflows
+1. **CI - Unit Tests** (`.github/workflows/unit-tests.yml`)
+   - Runs on every push and PR
+   - Tests Node.js 18.x and 20.x
+   - Validates linting, unit tests, and build
+
+2. **CI - E2E Tests** (`.github/workflows/e2e-tests.yml`)
+   - Runs Playwright tests for user workflows
+   - Validates accessibility compliance
+   - Generates comprehensive reports
+
+3. **PR Quality Check** (`.github/workflows/pr-quality-check.yml`)
+   - Runs on pull requests
+   - Provides automated feedback
+   - Includes coverage reporting
+
+4. **Full Test Suite** (`.github/workflows/full-test-suite.yml`)
+   - Daily scheduled runs
+   - Cross-platform matrix testing (Ubuntu, Windows, macOS)
+   - Comprehensive accessibility audits
+
+### 🎯 Quality Gates
+
+All pull requests must pass:
+- ✅ ESLint validation (0 errors)
+- ✅ 54 unit tests passing
+- ✅ TypeScript compilation
+- ✅ Production build successful
+- ✅ E2E accessibility tests
+- ✅ Coverage requirements
+
+### 📊 Automated Reporting
+
+- Test coverage reports uploaded as artifacts
+- Playwright HTML reports for E2E test results
+- Automated PR comments with test summaries
+- Cross-platform compatibility validation
 
 ## Development Workflow
 
 1. **Before making changes**: Run `npm run test:run` to ensure baseline
 2. **During development**: Use `npm run test` for watch mode
-3. **Before committing**: Run full test suite including build verification
-4. **For UI changes**: Run relevant E2E tests to validate user flows
+3. **Before committing**: GitHub Actions will validate automatically
+4. **Pull requests**: Automated quality checks provide instant feedback
+5. **Deployment**: Only successful builds can be merged
 
 This comprehensive test suite ensures the accessibility app suite maintains high quality and accessibility standards.
