@@ -1,10 +1,11 @@
 import { Link } from 'react-router-dom';
+import { useTranslation } from 'react-i18next';
 import './HomePage.css';
 
 interface AppTile {
   id: string;
-  title: string;
-  description: string;
+  titleKey: string;
+  descriptionKey: string;
   path: string;
   icon: string;
 }
@@ -12,62 +13,69 @@ interface AppTile {
 const apps: AppTile[] = [
   {
     id: 'documentation',
-    title: 'Documentation',
-    description: 'Complete guide to accessibility features and usage',
+    titleKey: 'homepage.apps.documentation.title',
+    descriptionKey: 'homepage.apps.documentation.description',
     path: '/documentation',
     icon: '📖'
   },
   {
     id: 'calculator',
-    title: 'Calculator',
-    description: 'A calculator with ticker tape style display',
+    titleKey: 'homepage.apps.calculator.title',
+    descriptionKey: 'homepage.apps.calculator.description',
     path: '/calculator',
     icon: '🧮'
   },
   {
     id: 'rainbows',
-    title: 'Rainbow Generator',
-    description: 'Create bouncing rainbows across the page',
+    titleKey: 'homepage.apps.rainbows.title',
+    descriptionKey: 'homepage.apps.rainbows.description',
     path: '/rainbows',
     icon: '🌈'
   },
   {
     id: 'solitaire',
-    title: 'Solitaire',
-    description: 'Classic card game of Solitaire',
+    titleKey: 'homepage.apps.solitaire.title',
+    descriptionKey: 'homepage.apps.solitaire.description',
     path: '/solitaire',
     icon: '🃏'
   },
   {
     id: 'arcade',
-    title: 'Arcade Game',
-    description: 'Simple arcade-style game',
+    titleKey: 'homepage.apps.arcade.title',
+    descriptionKey: 'homepage.apps.arcade.description',
     path: '/arcade',
     icon: '🕹️'
   }
 ];
 
 export default function HomePage() {
+  const { t } = useTranslation();
+
   return (
     <div className="home-page">
       <header className="home-header">
-        <h1>Accessible App Suite</h1>
-        <p>A collection of accessible and fun applications</p>
+        <h1>{t('homepage.title')}</h1>
+        <p>{t('homepage.subtitle')}</p>
       </header>
       
       <main className="apps-grid">
-        {apps.map((app) => (
-          <Link 
-            key={app.id} 
-            to={app.path} 
-            className="app-tile"
-            aria-label={`Open ${app.title}: ${app.description}`}
-          >
-            <div className="app-icon" aria-hidden="true">{app.icon}</div>
-            <h2 className="app-title">{app.title}</h2>
-            <p className="app-description">{app.description}</p>
-          </Link>
-        ))}
+        {apps.map((app) => {
+          const title = t(app.titleKey);
+          const description = t(app.descriptionKey);
+          
+          return (
+            <Link 
+              key={app.id} 
+              to={app.path} 
+              className="app-tile"
+              aria-label={t('homepage.openApp', { title, description })}
+            >
+              <div className="app-icon" aria-hidden="true">{app.icon}</div>
+              <h2 className="app-title">{title}</h2>
+              <p className="app-description">{description}</p>
+            </Link>
+          );
+        })}
       </main>
     </div>
   );

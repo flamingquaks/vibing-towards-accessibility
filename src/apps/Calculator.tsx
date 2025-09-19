@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { useTranslation } from 'react-i18next';
 import './Calculator.css';
 
 interface CalculationStep {
@@ -7,6 +8,7 @@ interface CalculationStep {
 }
 
 export default function Calculator() {
+  const { t } = useTranslation();
   const [display, setDisplay] = useState('0');
   const [previousValue, setPreviousValue] = useState<number | null>(null);
   const [operation, setOperation] = useState<string | null>(null);
@@ -112,12 +114,12 @@ export default function Calculator() {
 
   return (
     <div className="calculator-app">
-      <h1>Calculator</h1>
+      <h1>{t('calculator.title')}</h1>
       
       <div className="calculator-container">
         <div className="calculator">
           <div className="display">
-            <span className="display-value" aria-live="polite" aria-label={`Current value: ${display}`}>
+            <span className="display-value" aria-live="polite" aria-label={`${t('calculator.display')}: ${display}`}>
               {display}
             </span>
           </div>
@@ -136,11 +138,11 @@ export default function Calculator() {
           </div>
         </div>
 
-        <div className="ticker-tape" aria-label="Calculation history">
-          <h2>Calculation History</h2>
+        <div className="ticker-tape" aria-label={t('calculator.calculationTape')}>
+          <h2>{t('calculator.calculationTape')}</h2>
           <div className="tape-container">
             {history.length === 0 ? (
-              <p className="no-history">No calculations yet</p>
+              <p className="no-history">{t('calculator.noHistory')}</p>
             ) : (
               history.slice(-10).map((step, index) => (
                 <div key={index} className="tape-entry" role="listitem">
