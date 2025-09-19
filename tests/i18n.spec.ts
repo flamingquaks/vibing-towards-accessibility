@@ -249,11 +249,16 @@ function isTranslationCall(expression: ts.Expression): boolean {
 
 function hasTranslationKey(translations: unknown, keyPath: string): boolean {
   const segments = keyPath.split('.');
-  let current: any = translations;
+  let current: unknown = translations;
 
   for (const segment of segments) {
-    if (current && Object.prototype.hasOwnProperty.call(current, segment)) {
-      current = current[segment];
+    if (
+      typeof current === 'object' &&
+      current !== null &&
+      Object.prototype.hasOwnProperty.call(current, segment)
+    ) {
+      // TypeScript doesn't know the type, so we use type assertion
+      current = (current as Record<string, unknown>)[segment];
     } else {
       return false;
     }
