@@ -34,7 +34,18 @@
     "title": "Calculator",
     "display": "Display",
     "calculationTape": "Calculation Tape",
-    "noHistory": "No calculations yet"
+    "noHistory": "No calculations yet",
+    "buttons": {
+      "clear": "Clear all",
+      "clearEntry": "Clear entry", 
+      "divide": "Divide",
+      "multiply": "Multiply",
+      "subtract": "Subtract",
+      "add": "Add",
+      "equals": "Equals",
+      "decimal": "Decimal point",
+      "number": "Number {{number}}"
+    }
   },
   "rainbowGenerator": {
     "title": "Rainbow Generator",
@@ -42,6 +53,7 @@
     "startAuto": "Start Auto",
     "stopAuto": "Stop Auto",
     "clearRainbows": "Clear All",
+    "instructions": "Click anywhere on the canvas or use the buttons above to create colorful bouncing rainbows!",
     "rainbowPlayground": "Rainbow playground - click to add rainbows",
     "emptyState": "Click here or use the buttons above to create bouncing rainbows!",
     "rainbowsActive": "Rainbows active: {{count}}",
