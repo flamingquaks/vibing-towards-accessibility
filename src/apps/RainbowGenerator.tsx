@@ -154,7 +154,7 @@ export default function RainbowGenerator() {
           </button>
         </div>
         <p className="instructions">
-          {t('rainbowGenerator.emptyState')}
+          {t('rainbowGenerator.instructions')}
         </p>
       </div>
 
