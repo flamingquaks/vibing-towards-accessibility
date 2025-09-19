@@ -11,6 +11,13 @@ interface AppTile {
 
 const apps: AppTile[] = [
   {
+    id: 'documentation',
+    title: 'Documentation',
+    description: 'Complete guide to accessibility features and usage',
+    path: '/documentation',
+    icon: '📖'
+  },
+  {
     id: 'calculator',
     title: 'Calculator',
     description: 'A calculator with ticker tape style display',
