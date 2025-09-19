@@ -1,4 +1,5 @@
 import { useState, useEffect, useCallback, useRef } from 'react';
+import { useTranslation } from 'react-i18next';
 import './ArcadeGame.css';
 
 interface Position {
@@ -13,6 +14,7 @@ const INITIAL_SNAKE = [{ x: 10, y: 10 }];
 const INITIAL_DIRECTION: Direction = 'RIGHT';
 
 export default function ArcadeGame() {
+  const { t } = useTranslation();
   const [snake, setSnake] = useState<Position[]>(INITIAL_SNAKE);
   const [food, setFood] = useState<Position>({ x: 15, y: 10 });
   const [gameOver, setGameOver] = useState(false);
@@ -202,18 +204,18 @@ export default function ArcadeGame() {
   return (
     <div className="arcade-game">
       <div className="game-header">
-        <h1>🐍 Snake Game</h1>
+        <h1>{t('arcadeGame.title')}</h1>
         <div className="game-stats">
           <div className="stat">
-            <span className="stat-label">Score:</span>
+            <span className="stat-label">{t('arcadeGame.score')}</span>
             <span className="stat-value">{score}</span>
           </div>
           <div className="stat">
-            <span className="stat-label">High Score:</span>
+            <span className="stat-label">{t('arcadeGame.highScore')}</span>
             <span className="stat-value">{highScore}</span>
           </div>
           <div className="stat">
-            <span className="stat-label">Length:</span>
+            <span className="stat-label">{t('arcadeGame.length')}</span>
             <span className="stat-value">{snake.length}</span>
           </div>
         </div>
@@ -223,7 +225,7 @@ export default function ArcadeGame() {
         <div 
           className="game-board"
           role="application"
-          aria-label="Snake game board"
+          aria-label={t('arcadeGame.gameBoard')}
           tabIndex={0}
         >
           {Array.from({ length: GRID_SIZE * GRID_SIZE }).map((_, index) => {
@@ -247,21 +249,21 @@ export default function ArcadeGame() {
           <div className="control-buttons">
             {!isPlaying && !gameOver && (
               <button onClick={startGame} className="control-btn start-btn">
-                ▶️ Start Game
+                {t('arcadeGame.startGame')}
               </button>
             )}
             {!isPlaying && gameOver && (
               <button onClick={startGame} className="control-btn restart-btn">
-                🔄 Play Again
+                {t('arcadeGame.playAgain')}
               </button>
             )}
             {isPlaying && (
               <button onClick={pauseGame} className="control-btn pause-btn">
-                ⏸️ Pause
+                {t('arcadeGame.pause')}
               </button>
             )}
             <button onClick={resetGame} className="control-btn reset-btn">
-              🔄 Reset
+              {t('arcadeGame.reset')}
             </button>
           </div>
 
@@ -270,7 +272,7 @@ export default function ArcadeGame() {
               <button 
                 className="direction-btn"
                 onClick={() => handleDirectionClick('UP')}
-                aria-label="Move up"
+                aria-label={t('arcadeGame.moveUp')}
                 disabled={!isPlaying}
               >
                 ⬆️
@@ -280,7 +282,7 @@ export default function ArcadeGame() {
               <button 
                 className="direction-btn"
                 onClick={() => handleDirectionClick('LEFT')}
-                aria-label="Move left"
+                aria-label={t('arcadeGame.moveLeft')}
                 disabled={!isPlaying}
               >
                 ⬅️
@@ -288,7 +290,7 @@ export default function ArcadeGame() {
               <button 
                 className="direction-btn"
                 onClick={() => handleDirectionClick('DOWN')}
-                aria-label="Move down"
+                aria-label={t('arcadeGame.moveDown')}
                 disabled={!isPlaying}
               >
                 ⬇️
@@ -296,7 +298,7 @@ export default function ArcadeGame() {
               <button 
                 className="direction-btn"
                 onClick={() => handleDirectionClick('RIGHT')}
-                aria-label="Move right"
+                aria-label={t('arcadeGame.moveRight')}
                 disabled={!isPlaying}
               >
                 ➡️
@@ -305,13 +307,13 @@ export default function ArcadeGame() {
           </div>
 
           <div className="instructions">
-            <h3>How to Play:</h3>
+            <h3>{t('arcadeGame.howToPlay')}</h3>
             <ul>
-              <li>Use arrow keys or WASD to move</li>
-              <li>Eat the red food to grow and score points</li>
-              <li>Don't hit the walls or yourself</li>
-              <li>Press Space to pause/start</li>
-              <li>Game gets faster as you score more!</li>
+              <li>{t('arcadeGame.instructions.movement')}</li>
+              <li>{t('arcadeGame.instructions.eat')}</li>
+              <li>{t('arcadeGame.instructions.avoid')}</li>
+              <li>{t('arcadeGame.instructions.pause')}</li>
+              <li>{t('arcadeGame.instructions.speed')}</li>
             </ul>
           </div>
         </div>
@@ -320,14 +322,14 @@ export default function ArcadeGame() {
       {gameOver && (
         <div className="game-over-modal">
           <div className="modal-content">
-            <h2>Game Over!</h2>
-            <p>Final Score: <strong>{score}</strong></p>
-            <p>Snake Length: <strong>{snake.length}</strong></p>
+            <h2>{t('arcadeGame.gameOver.title')}</h2>
+            <p>{t('arcadeGame.gameOver.finalScore', { score })}</p>
+            <p>{t('arcadeGame.gameOver.snakeLength', { length: snake.length })}</p>
             {score === highScore && score > 0 && (
-              <p className="new-high-score">🎉 New High Score! 🎉</p>
+              <p className="new-high-score">{t('arcadeGame.gameOver.newHighScore')}</p>
             )}
             <button onClick={startGame} className="play-again-btn">
-              Play Again
+              {t('arcadeGame.gameOver.playAgain')}
             </button>
           </div>
         </div>
