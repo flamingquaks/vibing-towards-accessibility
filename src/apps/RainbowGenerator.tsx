@@ -1,4 +1,5 @@
 import { useState, useEffect, useRef } from 'react';
+import { useTranslation } from 'react-i18next';
 import './RainbowGenerator.css';
 
 interface Rainbow {
@@ -12,6 +13,7 @@ interface Rainbow {
 }
 
 export default function RainbowGenerator() {
+  const { t } = useTranslation();
   const [rainbows, setRainbows] = useState<Rainbow[]>([]);
   const [isGenerating, setIsGenerating] = useState(false);
   const containerRef = useRef<HTMLDivElement>(null);
@@ -127,32 +129,32 @@ export default function RainbowGenerator() {
   return (
     <div className="rainbow-app">
       <div className="rainbow-controls">
-        <h1>Rainbow Generator</h1>
+        <h1>{t('rainbowGenerator.title')}</h1>
         <div className="control-buttons">
           <button 
             onClick={addRainbow}
             className="control-btn add-btn"
-            aria-label="Add a single rainbow"
+            aria-label={t('rainbowGenerator.addRainbow')}
           >
-            🌈 Add Rainbow
+            🌈 {t('rainbowGenerator.addRainbow')}
           </button>
           <button 
             onClick={isGenerating ? stopGenerating : startGenerating}
             className={`control-btn ${isGenerating ? 'stop-btn' : 'start-btn'}`}
-            aria-label={isGenerating ? 'Stop generating rainbows' : 'Start generating rainbows automatically'}
+            aria-label={isGenerating ? t('rainbowGenerator.stopAuto') : t('rainbowGenerator.startAuto')}
           >
-            {isGenerating ? '⏹️ Stop' : '▶️ Auto Generate'}
+            {isGenerating ? `⏹️ ${t('rainbowGenerator.stopAuto')}` : `▶️ ${t('rainbowGenerator.startAuto')}`}
           </button>
           <button 
             onClick={clearRainbows}
             className="control-btn clear-btn"
-            aria-label="Clear all rainbows"
+            aria-label={t('rainbowGenerator.clearRainbows')}
           >
-            🗑️ Clear All
+            🗑️ {t('rainbowGenerator.clearRainbows')}
           </button>
         </div>
         <p className="instructions">
-          Click anywhere in the area below to create a rainbow, or use the buttons above!
+          {t('rainbowGenerator.instructions')}
         </p>
       </div>
 
@@ -161,7 +163,7 @@ export default function RainbowGenerator() {
         className="rainbow-container"
         onClick={addRainbow}
         role="application"
-        aria-label="Rainbow playground - click to add rainbows"
+        aria-label={t('rainbowGenerator.rainbowPlayground')}
         tabIndex={0}
         onKeyDown={(e) => {
           if (e.key === 'Enter' || e.key === ' ') {
@@ -186,14 +188,14 @@ export default function RainbowGenerator() {
         ))}
         {rainbows.length === 0 && (
           <div className="empty-state">
-            <p>Click here or use the buttons above to create bouncing rainbows!</p>
+            <p>{t('rainbowGenerator.emptyState')}</p>
           </div>
         )}
       </div>
 
       <div className="rainbow-info">
-        <p>Rainbows active: <strong>{rainbows.length}</strong></p>
-        <p>Status: <strong>{isGenerating ? 'Auto-generating' : 'Manual mode'}</strong></p>
+        <p>{t('rainbowGenerator.rainbowsActive', { count: rainbows.length })}</p>
+        <p>{t('rainbowGenerator.status', { status: isGenerating ? t('rainbowGenerator.autoGenerating') : t('rainbowGenerator.manualMode') })}</p>
       </div>
     </div>
   );

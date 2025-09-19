@@ -1,0 +1,181 @@
+{
+  "homepage": {
+    "title": "Accessible App Suite",
+    "subtitle": "A collection of accessible and fun applications",
+    "apps": {
+      "documentation": {
+        "title": "Documentation", 
+        "description": "Complete guide to accessibility features and usage"
+      },
+      "calculator": {
+        "title": "Calculator",
+        "description": "A calculator with ticker tape style display"
+      },
+      "rainbows": {
+        "title": "Rainbow Generator",
+        "description": "Create bouncing rainbows across the page"
+      },
+      "solitaire": {
+        "title": "Solitaire",
+        "description": "Classic card game of Solitaire"
+      },
+      "arcade": {
+        "title": "Arcade Game",
+        "description": "Simple arcade-style game"
+      }
+    },
+    "openApp": "Open {{title}}: {{description}}"
+  },
+  "layout": {
+    "backToHome": "Return to home page",
+    "home": "Home"
+  },
+  "calculator": {
+    "title": "Calculator",
+    "display": "Display",
+    "calculationTape": "Calculation Tape",
+    "noHistory": "No calculations yet"
+  },
+  "rainbowGenerator": {
+    "title": "Rainbow Generator",
+    "addRainbow": "Add Rainbow",
+    "startAuto": "Start Auto",
+    "stopAuto": "Stop Auto",
+    "clearRainbows": "Clear All",
+    "rainbowPlayground": "Rainbow playground - click to add rainbows",
+    "emptyState": "Click here or use the buttons above to create bouncing rainbows!",
+    "rainbowsActive": "Rainbows active: {{count}}",
+    "status": "Status: {{status}}",
+    "autoGenerating": "Auto-generating",
+    "manualMode": "Manual mode"
+  },
+  "solitaire": {
+    "title": "Solitaire",
+    "moves": "Moves: {{count}}",
+    "newGame": "New Game",
+    "winMessage": "🎉 Congratulations! You won in {{moves}} moves! 🎉",
+    "stockPile": "Stock pile - click to draw cards",
+    "wastePile": "Waste pile",
+    "foundation": "Foundation {{suit}}",
+    "tableau": "Tableau pile {{index}}"
+  },
+  "arcadeGame": {
+    "title": "🐍 Snake Game",
+    "score": "Score:",
+    "highScore": "High Score:",
+    "length": "Length:",
+    "gameBoard": "Snake game board",
+    "startGame": "▶️ Start Game",
+    "playAgain": "🔄 Play Again",
+    "pause": "⏸️ Pause",
+    "reset": "🔄 Reset",
+    "moveUp": "Move up",
+    "moveLeft": "Move left",
+    "moveDown": "Move down",
+    "moveRight": "Move right",
+    "howToPlay": "How to Play:",
+    "instructions": {
+      "movement": "Use arrow keys or WASD to move",
+      "eat": "Eat the red food to grow and score points",
+      "avoid": "Don't hit the walls or yourself",
+      "pause": "Press Space to pause/start",
+      "speed": "Game gets faster as you score more!"
+    },
+    "gameOver": {
+      "title": "Game Over!",
+      "finalScore": "Final Score: {{score}}",
+      "snakeLength": "Snake Length: {{length}}",
+      "newHighScore": "🎉 New High Score! 🎉",
+      "playAgain": "Play Again"
+    }
+  },
+  "documentation": {
+    "title": "Accessibility Documentation",
+    "subtitle": "Complete guide to accessibility features in our app suite",
+    "getStarted": {
+      "title": "Getting Started",
+      "text": "Welcome to our collection of accessible applications! Each app in this suite has been carefully designed with accessibility in mind, ensuring that everyone can enjoy and interact with the content regardless of their abilities or the assistive technologies they use.",
+      "navigation": "🧭 Navigation",
+      "use": {
+        "keyboard": "Keyboard Users: Tab through interactive elements, use Enter/Space to activate",
+        "screenReader": "Screen Reader Users: Each app provides live updates and clear labeling",
+        "mobile": "Mobile Users: All apps are touch-friendly and responsive"
+      },
+      "backToHome": "← Back to App Suite"
+    },
+    "calculator": {
+      "title": "🧮 Calculator",
+      "description": "A fully accessible calculator with visual and auditory feedback. Features a ticker-tape style history that keeps track of your calculations.",
+      "keyFeatures": "Key Features:",
+      "features": {
+        "basicOps": "Basic arithmetic operations (+, -, ×, ÷)",
+        "history": "Calculation history with ticker-tape display", 
+        "keyboard": "Full keyboard support for all operations",
+        "clear": "Clear and clear-entry functions"
+      },
+      "accessibility": "Accessibility Highlights:",
+      "accessibilityFeatures": {
+        "keyboard": "Keyboard Support: Full keyboard navigation support",
+        "visual": "Visual Feedback: Clear focus indicators and button states"
+      },
+      "tryApp": "🧮 Try Calculator"
+    },
+    "rainbowGenerator": {
+      "title": "🌈 Rainbow Generator", 
+      "description": "An interactive visual experience that creates bouncing rainbow animations. This app showcases accessible interactive graphics and animation controls.",
+      "keyFeatures": "Key Features:",
+      "features": {
+        "click": "Click or tap to create bouncing rainbows",
+        "auto": "Auto-generation mode for continuous rainbow creation",
+        "physics": "Physics-based animation with boundary collision",
+        "counter": "Real-time rainbow counter"
+      },
+      "accessibility": "Accessibility Highlights:",
+      "accessibilityFeatures": {
+        "keyboard": "Keyboard Access: Space/Enter keys create rainbows",
+        "controls": "Alternative Controls: Button controls for users who can't use mouse",
+        "status": "Status Updates: Live count of active rainbows", 
+        "motion": "Motion Control: Clear start/stop controls for auto-generation"
+      },
+      "tryApp": "🌈 Try Rainbow Generator"
+    },
+    "solitaire": {
+      "title": "🃏 Solitaire",
+      "description": "A classic Klondike Solitaire implementation with full accessibility support. This complex card game demonstrates accessible drag-and-drop alternatives and game state management.",
+      "keyFeatures": "Key Features:",
+      "features": {
+        "klondike": "Classic Klondike Solitaire rules",
+        "click": "Click-based card movement (no drag required)",
+        "auto": "Auto-complete when possible",
+        "undo": "Move counter and game statistics"
+      },
+      "accessibility": "Accessibility Highlights:",
+      "accessibilityFeatures": {
+        "click": "Click Navigation: No drag-and-drop required",
+        "clear": "Clear Visual Feedback: Selected cards and valid moves highlighted",
+        "state": "Game State Announcements: Move confirmations and game status",
+        "keyboard": "Keyboard Support: Full game playable with keyboard only"
+      },
+      "tryApp": "🃏 Try Solitaire"
+    },
+    "arcade": {
+      "title": "🕹️ Arcade Game",
+      "description": "A classic Snake game implementation with comprehensive accessibility features. Demonstrates how fast-paced games can be made accessible.",
+      "keyFeatures": "Key Features:",
+      "features": {
+        "snake": "Classic Snake gameplay",
+        "keyboard": "Keyboard and button controls",
+        "score": "Score tracking and high scores",
+        "pause": "Pause/resume functionality"
+      },
+      "accessibility": "Accessibility Highlights:",
+      "accessibilityFeatures": {
+        "keyboard": "Keyboard Controls: Arrow keys and WASD for movement",
+        "buttons": "Button Controls: On-screen directional buttons",
+        "status": "Status Updates: Score and game state announcements",
+        "pause": "Pause Control: Space bar to pause/resume"
+      },
+      "tryApp": "🕹️ Try Arcade Game"
+    }
+  }
+}

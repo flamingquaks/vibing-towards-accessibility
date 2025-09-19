@@ -1,4 +1,5 @@
 import { Link, useLocation } from 'react-router-dom';
+import { useTranslation } from 'react-i18next';
 import './Layout.css';
 
 interface LayoutProps {
@@ -6,6 +7,7 @@ interface LayoutProps {
 }
 
 export default function Layout({ children }: LayoutProps) {
+  const { t } = useTranslation();
   const location = useLocation();
   const isHome = location.pathname === '/';
 
@@ -13,8 +15,8 @@ export default function Layout({ children }: LayoutProps) {
     <div className="layout">
       {!isHome && (
         <nav className="layout-nav">
-          <Link to="/" className="home-link" aria-label="Return to home page">
-            ← Home
+          <Link to="/" className="home-link" aria-label={t('layout.backToHome')}>
+            ← {t('layout.home')}
           </Link>
         </nav>
       )}
