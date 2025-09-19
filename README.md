@@ -25,7 +25,18 @@ Currently, two official plugins are available:
 
 ## 📦 Deployment
 
-The application is automatically deployed to GitHub Pages using GitHub Actions when changes are pushed to the main branch. The deployment workflow:
+The application is automatically deployed to GitHub Pages using GitHub Actions when changes are pushed to the main branch. 
+
+### Setup Instructions
+
+**Before the workflow can run successfully, you must enable GitHub Pages in your repository:**
+
+1. Go to your repository **Settings** → **Pages**
+2. Under **Source**, select "**Deploy from a branch**" or "**GitHub Actions**" (recommended)
+3. If using "Deploy from a branch", select the branch and folder
+4. If using "GitHub Actions", the workflow will handle deployment automatically
+
+The deployment workflow:
 
 1. **Builds** the application with the correct base path for GitHub Pages
 2. **Lints** the code to ensure quality
