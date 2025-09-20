@@ -1,1 +1,1 @@
-export const APP_BASENAME = '/vibing-towards-accessibility';
+export const APP_BASENAME = process.env.NODE_ENV === 'production' ? '/vibing-towards-accessibility' : '';

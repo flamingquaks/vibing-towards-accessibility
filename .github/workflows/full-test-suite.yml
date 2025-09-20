@@ -1,0 +1,86 @@
+name: CI - Full Test Suite
+
+on:
+  schedule:
+    # Run full test suite daily at 2 AM UTC
+    - cron: '0 2 * * *'
+  workflow_dispatch:
+    # Allow manual triggering
+
+jobs:
+  accessibility-audit:
+    runs-on: ubuntu-latest
+    
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v4
+
+    - name: Setup Node.js
+      uses: actions/setup-node@v4
+      with:
+        node-version: '20'
+        cache: 'npm'
+
+    - name: Install dependencies
+      run: npm ci
+
+    - name: Build project
+      run: npm run build
+
+    - name: Start development server
+      run: npm run preview &
+      
+    - name: Wait for server
+      run: npx wait-on http://localhost:4173
+
+    - name: Install Playwright browsers
+      run: npx playwright install --with-deps
+
+    - name: Run accessibility tests
+      run: npm run test:e2e -- --grep "Accessibility"
+
+    - name: Upload accessibility report
+      uses: actions/upload-artifact@v4
+      if: always()
+      with:
+        name: accessibility-report
+        path: playwright-report/
+        retention-days: 30
+
+  full-test-matrix:
+    runs-on: ${{ matrix.os }}
+    
+    strategy:
+      matrix:
+        os: [ubuntu-latest, windows-latest, macos-latest]
+        node-version: [18.x, 20.x]
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v4
+
+    - name: Setup Node.js ${{ matrix.node-version }}
+      uses: actions/setup-node@v4
+      with:
+        node-version: ${{ matrix.node-version }}
+        cache: 'npm'
+
+    - name: Install dependencies
+      run: npm ci
+
+    - name: Run linter
+      run: npm run lint
+
+    - name: Run unit tests
+      run: npm run test:run
+
+    - name: Build project
+      run: npm run build
+
+    - name: Upload test coverage
+      uses: actions/upload-artifact@v4
+      if: matrix.os == 'ubuntu-latest' && matrix.node-version == '20.x'
+      with:
+        name: coverage-report
+        path: coverage/
+        retention-days: 30
