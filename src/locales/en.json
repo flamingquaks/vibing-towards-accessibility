@@ -37,7 +37,9 @@
     "noHistory": "No calculations yet",
     "buttons": {
       "clear": "Clear all",
-      "clearEntry": "Clear entry", 
+      "clearEntry": "Clear entry",
+      "clearText": "AC",
+      "clearEntryText": "CE",
       "divide": "Divide",
       "multiply": "Multiply",
       "subtract": "Subtract",
@@ -69,7 +71,8 @@
     "stockPile": "Stock pile - click to draw cards",
     "wastePile": "Waste pile",
     "foundation": "Foundation {{suit}}",
-    "tableau": "Tableau pile {{index}}"
+    "tableau": "Tableau pile {{index}}",
+    "cardLabel": "{{rank}} of {{suit}}"
   },
   "arcadeGame": {
     "title": "🐍 Snake Game",

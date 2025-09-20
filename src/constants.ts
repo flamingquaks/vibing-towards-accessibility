@@ -1,0 +1,1 @@
+export const APP_BASENAME = '/vibing-towards-accessibility';

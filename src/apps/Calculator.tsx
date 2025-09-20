@@ -8,7 +8,8 @@ interface CalculationStep {
 }
 
 interface ButtonConfig {
-  text: string;
+  text?: string;
+  textKey?: string;
   action: () => void;
   className: string;
   span?: string;
@@ -101,8 +102,8 @@ export default function Calculator() {
   };
 
   const buttons: ButtonConfig[] = [
-    { text: 'AC', action: clearAll, className: 'clear', ariaKey: 'calculator.buttons.clear' },
-    { text: 'CE', action: clearEntry, className: 'clear', ariaKey: 'calculator.buttons.clearEntry' },
+    { textKey: 'calculator.buttons.clearText', action: clearAll, className: 'clear', ariaKey: 'calculator.buttons.clear' },
+    { textKey: 'calculator.buttons.clearEntryText', action: clearEntry, className: 'clear', ariaKey: 'calculator.buttons.clearEntry' },
     { text: '÷', action: () => inputOperation('÷'), className: 'operator', ariaKey: 'calculator.buttons.divide' },
     { text: '×', action: () => inputOperation('×'), className: 'operator', ariaKey: 'calculator.buttons.multiply' },
     { text: '7', action: () => inputNumber('7'), className: 'number', ariaKey: 'calculator.buttons.number', ariaParams: { number: '7' } },
@@ -141,7 +142,7 @@ export default function Calculator() {
                 onClick={button.action}
                 aria-label={t(button.ariaKey, button.ariaParams)}
               >
-                {button.text}
+                {button.textKey ? t(button.textKey) : button.text || ''}
               </button>
             ))}
           </div>
