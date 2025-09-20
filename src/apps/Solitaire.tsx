@@ -22,6 +22,7 @@ export default function Solitaire() {
   const [moves, setMoves] = useState(0);
   const [gameWon, setGameWon] = useState(false);
 
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   const suits: Suit[] = ['♠', '♥', '♦', '♣'];
   const ranks: Rank[] = ['A', '2', '3', '4', '5', '6', '7', '8', '9', '10', 'J', 'Q', 'K'];
 
@@ -38,7 +39,7 @@ export default function Solitaire() {
       });
     });
     return shuffleDeck(newDeck);
-  }, []);
+  }, [ranks, suits]);
 
   const shuffleDeck = (deck: Card[]): Card[] => {
     const shuffled = [...deck];
