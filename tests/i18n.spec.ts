@@ -77,13 +77,12 @@ interface KeyUsage {
   file: string;
   line: number;
   column: number;
-      if (entry.isDirectory()) {
-        // Skip directories that don't contain source code to analyze
-        if (entry.name === 'locales' || entry.name === 'assets') {
-          continue;
-        }
-        stack.push(fullPath);
-      }
+}
+
+const sourceFileCache = new Map<string, ts.SourceFile>();
+
+function getSourceFiles(): string[] {
+  const files: string[] = [];
   const stack: string[] = [srcDir];
 
   while (stack.length > 0) {
