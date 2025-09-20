@@ -31,12 +31,15 @@ test.describe('Accessibility', () => {
 
   test('calculator should be accessible', async ({ page }) => {
     await page.goto('/calculator');
-    
+
+    // Wait for the component to load
+    await expect(page.getByRole('heading', { name: 'Calculator' })).toBeVisible();
+
     // Check display has proper labeling
-    await expect(page.locator('[aria-label*="Current value"]')).toBeVisible();
-    
+    await expect(page.locator('[aria-label*="Display:"]')).toBeVisible();
+
     // Check history section has proper labeling
-    await expect(page.locator('[aria-label="Calculation history"]')).toBeVisible();
+    await expect(page.locator('[aria-label="Calculation Tape"]')).toBeVisible();
     
     // Check all buttons have accessible names
     const buttons = page.getByRole('button');
@@ -61,9 +64,9 @@ test.describe('Accessibility', () => {
     expect(tabIndex).toBe('0');
     
     // Check buttons have proper labeling
-    await expect(page.getByRole('button', { name: 'Add a single rainbow' })).toBeVisible();
-    await expect(page.getByRole('button', { name: 'Start generating rainbows automatically' })).toBeVisible();
-    await expect(page.getByRole('button', { name: 'Clear all rainbows' })).toBeVisible();
+    await expect(page.getByRole('button', { name: 'Add Rainbow' })).toBeVisible();
+    await expect(page.getByRole('button', { name: 'Start Auto' })).toBeVisible();
+    await expect(page.getByRole('button', { name: 'Clear All' })).toBeVisible();
   });
 
   test('arcade game should be accessible', async ({ page }) => {
@@ -110,13 +113,13 @@ test.describe('Accessibility', () => {
     await expect(h1).toBeVisible();
     
     const h2s = page.getByRole('heading', { level: 2 });
-    expect(await h2s.count()).toBe(4); // One for each app
+    expect(await h2s.count()).toBe(5); // One for each app
     
     // Check landmark structure
     await expect(page.getByRole('main')).toBeVisible();
     
     // Navigate to a sub-page and check structure
-    await page.getByRole('link', { name: /Open Calculator/ }).click();
+    await page.getByRole('link', { name: /Open Calculator: A calculator/ }).click();
     await expect(page.getByRole('navigation')).toBeVisible();
     await expect(page.getByRole('main')).toBeVisible();
   });

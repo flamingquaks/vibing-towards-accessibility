@@ -58,7 +58,7 @@ export default function HomePage() {
         <p>{t('homepage.subtitle')}</p>
       </header>
       
-      <main className="apps-grid">
+      <section className="apps-grid">
         {apps.map((app) => {
           const title = t(app.titleKey);
           const description = t(app.descriptionKey);
@@ -76,7 +76,7 @@ export default function HomePage() {
             </Link>
           );
         })}
-      </main>
+      </section>
     </div>
   );
 }

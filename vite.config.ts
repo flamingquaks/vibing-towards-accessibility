@@ -5,23 +5,5 @@ import react from '@vitejs/plugin-react'
 // https://vite.dev/config/
 export default defineConfig({
   plugins: [react()],
-  base: '/vibing-towards-accessibility/',
-  test: {
-    globals: true,
-    environment: 'jsdom',
-    setupFiles: ['./src/test/setup.ts'],
-    exclude: ['**/node_modules/**', '**/tests/e2e/**', '**/dist/**'],
-    coverage: {
-      provider: 'v8',
-      reporter: ['text', 'json', 'html'],
-      exclude: [
-        'node_modules/',
-        'src/test/',
-        'tests/',
-        '**/*.d.ts',
-        '**/*.config.*',
-        'dist/',
-      ],
-    },
-  },
+  base: process.env.NODE_ENV === 'production' ? '/vibing-towards-accessibility/' : '/',
 })

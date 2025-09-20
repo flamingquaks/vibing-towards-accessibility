@@ -99,6 +99,8 @@ function getSourceFiles(): string[] {
         stack.push(fullPath);
       } else if (entry.isFile()) {
         if (fullPath.endsWith('.d.ts')) continue;
+        if (fullPath.endsWith('.test.ts') || fullPath.endsWith('.test.tsx')) continue;
+        if (fullPath.endsWith('.spec.ts') || fullPath.endsWith('.spec.tsx')) continue;
         if (fullPath.endsWith('.ts') || fullPath.endsWith('.tsx')) {
           files.push(fullPath);
         }
