@@ -24,10 +24,11 @@ export default function Solitaire() {
 
   // eslint-disable-next-line react-hooks/exhaustive-deps
   const suits: Suit[] = ['♠', '♥', '♦', '♣'];
-  const ranks: Rank[] = ['A', '2', '3', '4', '5', '6', '7', '8', '9', '10', 'J', 'Q', 'K'];
+  
 
   const createDeck = useCallback((): Card[] => {
     const newDeck: Card[] = [];
+    const ranks: Rank[] = ['A', '2', '3', '4', '5', '6', '7', '8', '9', '10', 'J', 'Q', 'K'];
     suits.forEach(suit => {
       ranks.forEach(rank => {
         newDeck.push({
@@ -39,7 +40,7 @@ export default function Solitaire() {
       });
     });
     return shuffleDeck(newDeck);
-  }, [ranks, suits]);
+  }, [suits]);
 
   const shuffleDeck = (deck: Card[]): Card[] => {
     const shuffled = [...deck];
