@@ -142,7 +142,7 @@ export default function Calculator() {
                 onClick={button.action}
                 aria-label={t(button.ariaKey, button.ariaParams)}
               >
-                {button.textKey ? t(button.textKey) : button.text || ''}
+                {button.textKey ? t(button.textKey) : button.text || 'Button'}
               </button>
             ))}
           </div>
