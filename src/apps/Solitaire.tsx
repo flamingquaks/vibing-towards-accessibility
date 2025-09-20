@@ -1,4 +1,5 @@
 import { useState, useEffect, useCallback } from 'react';
+import { useTranslation } from 'react-i18next';
 import './Solitaire.css';
 
 type Suit = '♠' | '♥' | '♦' | '♣';
@@ -12,6 +13,7 @@ interface Card {
 }
 
 export default function Solitaire() {
+  const { t } = useTranslation();
   const [foundations, setFoundations] = useState<Card[][]>([[], [], [], []]);
   const [tableau, setTableau] = useState<Card[][]>([[], [], [], [], [], [], []]);
   const [waste, setWaste] = useState<Card[]>([]);
@@ -20,11 +22,13 @@ export default function Solitaire() {
   const [moves, setMoves] = useState(0);
   const [gameWon, setGameWon] = useState(false);
 
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   const suits: Suit[] = ['♠', '♥', '♦', '♣'];
-  const ranks: Rank[] = ['A', '2', '3', '4', '5', '6', '7', '8', '9', '10', 'J', 'Q', 'K'];
+  
 
   const createDeck = useCallback((): Card[] => {
     const newDeck: Card[] = [];
+    const ranks: Rank[] = ['A', '2', '3', '4', '5', '6', '7', '8', '9', '10', 'J', 'Q', 'K'];
     suits.forEach(suit => {
       ranks.forEach(rank => {
         newDeck.push({
@@ -36,7 +40,7 @@ export default function Solitaire() {
       });
     });
     return shuffleDeck(newDeck);
-  }, []);
+  }, [suits]);
 
   const shuffleDeck = (deck: Card[]): Card[] => {
     const shuffled = [...deck];
@@ -193,18 +197,18 @@ export default function Solitaire() {
   return (
     <div className="solitaire-app">
       <div className="solitaire-header">
-        <h1>Solitaire</h1>
+        <h1>{t('solitaire.title')}</h1>
         <div className="game-stats">
-          <span>Moves: {moves}</span>
+          <span>{t('solitaire.moves', { count: moves })}</span>
           <button onClick={newGame} className="new-game-btn">
-            New Game
+            {t('solitaire.newGame')}
           </button>
         </div>
       </div>
 
       {gameWon && (
         <div className="win-message">
-          🎉 Congratulations! You won in {moves} moves! 🎉
+          {t('solitaire.winMessage', { moves })}
         </div>
       )}
 
@@ -216,18 +220,18 @@ export default function Solitaire() {
               onClick={drawFromStock}
               role="button"
               tabIndex={0}
-              aria-label={`Stock pile: ${stock.length} cards remaining`}
+              aria-label={t('solitaire.stockPile')}
             >
               {stock.length > 0 ? '🂠' : '⭕'}
             </div>
-            <div className="waste pile">
+            <div className="waste pile" aria-label={t('solitaire.wastePile')}>
               {waste.length > 0 && (
                 <div 
                   className={`card ${selectedCard?.pile === 'waste' ? 'selected' : ''}`}
                   onClick={() => handleCardClick('waste', waste.length - 1)}
                   role="button"
                   tabIndex={0}
-                  aria-label={`${waste[waste.length - 1].rank} of ${waste[waste.length - 1].suit}`}
+                  aria-label={t('solitaire.cardLabel', { rank: waste[waste.length - 1].rank, suit: waste[waste.length - 1].suit })}
                 >
                   <span className={`card-content ${waste[waste.length - 1].color}`}>
                     {waste[waste.length - 1].rank}{waste[waste.length - 1].suit}
@@ -245,7 +249,7 @@ export default function Solitaire() {
                 onClick={() => handleCardClick(`foundation${index}`, foundation.length)}
                 role="button"
                 tabIndex={0}
-                aria-label={`Foundation ${index + 1}: ${foundation.length} cards`}
+                aria-label={t('solitaire.foundation', { suit: suits[index] })}
               >
                 {foundation.length > 0 ? (
                   <div className="card">
@@ -274,7 +278,7 @@ export default function Solitaire() {
                   onClick={() => handleCardClick(`tableau${columnIndex}`, cardIndex)}
                   role="button"
                   tabIndex={0}
-                  aria-label={`${card.rank} of ${card.suit}`}
+                  aria-label={t('solitaire.cardLabel', { rank: card.rank, suit: card.suit })}
                 >
                   <span className={`card-content ${card.color}`}>
                     {card.rank}{card.suit}
@@ -287,7 +291,7 @@ export default function Solitaire() {
                   onClick={() => handleCardClick(`tableau${columnIndex}`, 0)}
                   role="button"
                   tabIndex={0}
-                  aria-label={`Empty tableau column ${columnIndex + 1}`}
+                  aria-label={t('solitaire.tableau', { index: columnIndex + 1 })}
                 >
                   👑
                 </div>

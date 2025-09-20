@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { useTranslation } from 'react-i18next';
 import './Calculator.css';
 
 interface CalculationStep {
@@ -6,7 +7,18 @@ interface CalculationStep {
   result: string;
 }
 
+interface ButtonConfig {
+  text?: string;
+  textKey?: string;
+  action: () => void;
+  className: string;
+  span?: string;
+  ariaKey: string;
+  ariaParams?: Record<string, string>;
+}
+
 export default function Calculator() {
+  const { t } = useTranslation();
   const [display, setDisplay] = useState('0');
   const [previousValue, setPreviousValue] = useState<number | null>(null);
   const [operation, setOperation] = useState<string | null>(null);
@@ -89,35 +101,35 @@ export default function Calculator() {
     }
   };
 
-  const buttons = [
-    { text: 'AC', action: clearAll, className: 'clear' },
-    { text: 'CE', action: clearEntry, className: 'clear' },
-    { text: '÷', action: () => inputOperation('÷'), className: 'operator' },
-    { text: '×', action: () => inputOperation('×'), className: 'operator' },
-    { text: '7', action: () => inputNumber('7'), className: 'number' },
-    { text: '8', action: () => inputNumber('8'), className: 'number' },
-    { text: '9', action: () => inputNumber('9'), className: 'number' },
-    { text: '-', action: () => inputOperation('-'), className: 'operator' },
-    { text: '4', action: () => inputNumber('4'), className: 'number' },
-    { text: '5', action: () => inputNumber('5'), className: 'number' },
-    { text: '6', action: () => inputNumber('6'), className: 'number' },
-    { text: '+', action: () => inputOperation('+'), className: 'operator' },
-    { text: '1', action: () => inputNumber('1'), className: 'number' },
-    { text: '2', action: () => inputNumber('2'), className: 'number' },
-    { text: '3', action: () => inputNumber('3'), className: 'number' },
-    { text: '=', action: performCalculation, className: 'equals', span: 'row' },
-    { text: '0', action: () => inputNumber('0'), className: 'number', span: 'wide' },
-    { text: '.', action: inputDecimal, className: 'number' },
+  const buttons: ButtonConfig[] = [
+    { textKey: 'calculator.buttons.clearText', action: clearAll, className: 'clear', ariaKey: 'calculator.buttons.clear' },
+    { textKey: 'calculator.buttons.clearEntryText', action: clearEntry, className: 'clear', ariaKey: 'calculator.buttons.clearEntry' },
+    { text: '÷', action: () => inputOperation('÷'), className: 'operator', ariaKey: 'calculator.buttons.divide' },
+    { text: '×', action: () => inputOperation('×'), className: 'operator', ariaKey: 'calculator.buttons.multiply' },
+    { text: '7', action: () => inputNumber('7'), className: 'number', ariaKey: 'calculator.buttons.number', ariaParams: { number: '7' } },
+    { text: '8', action: () => inputNumber('8'), className: 'number', ariaKey: 'calculator.buttons.number', ariaParams: { number: '8' } },
+    { text: '9', action: () => inputNumber('9'), className: 'number', ariaKey: 'calculator.buttons.number', ariaParams: { number: '9' } },
+    { text: '-', action: () => inputOperation('-'), className: 'operator', ariaKey: 'calculator.buttons.subtract' },
+    { text: '4', action: () => inputNumber('4'), className: 'number', ariaKey: 'calculator.buttons.number', ariaParams: { number: '4' } },
+    { text: '5', action: () => inputNumber('5'), className: 'number', ariaKey: 'calculator.buttons.number', ariaParams: { number: '5' } },
+    { text: '6', action: () => inputNumber('6'), className: 'number', ariaKey: 'calculator.buttons.number', ariaParams: { number: '6' } },
+    { text: '+', action: () => inputOperation('+'), className: 'operator', ariaKey: 'calculator.buttons.add' },
+    { text: '1', action: () => inputNumber('1'), className: 'number', ariaKey: 'calculator.buttons.number', ariaParams: { number: '1' } },
+    { text: '2', action: () => inputNumber('2'), className: 'number', ariaKey: 'calculator.buttons.number', ariaParams: { number: '2' } },
+    { text: '3', action: () => inputNumber('3'), className: 'number', ariaKey: 'calculator.buttons.number', ariaParams: { number: '3' } },
+    { text: '=', action: performCalculation, className: 'equals', span: 'row', ariaKey: 'calculator.buttons.equals' },
+    { text: '0', action: () => inputNumber('0'), className: 'number', span: 'wide', ariaKey: 'calculator.buttons.number', ariaParams: { number: '0' } },
+    { text: '.', action: inputDecimal, className: 'number', ariaKey: 'calculator.buttons.decimal' },
   ];
 
   return (
     <div className="calculator-app">
-      <h1>Calculator</h1>
+      <h1>{t('calculator.title')}</h1>
       
       <div className="calculator-container">
         <div className="calculator">
           <div className="display">
-            <span className="display-value" aria-live="polite" aria-label={`Current value: ${display}`}>
+            <span className="display-value" aria-live="polite" aria-label={`${t('calculator.display')}: ${display}`}>
               {display}
             </span>
           </div>
@@ -128,19 +140,19 @@ export default function Calculator() {
                 key={index}
                 className={`calc-button ${button.className} ${button.span || ''}`}
                 onClick={button.action}
-                aria-label={`${button.text} button`}
+                aria-label={t(button.ariaKey, button.ariaParams)}
               >
-                {button.text}
+                {button.textKey ? t(button.textKey) : button.text || 'Button'}
               </button>
             ))}
           </div>
         </div>
 
-        <div className="ticker-tape" aria-label="Calculation history">
-          <h2>Calculation History</h2>
+        <div className="ticker-tape" aria-label={t('calculator.calculationTape')}>
+          <h2>{t('calculator.calculationTape')}</h2>
           <div className="tape-container">
             {history.length === 0 ? (
-              <p className="no-history">No calculations yet</p>
+              <p className="no-history">{t('calculator.noHistory')}</p>
             ) : (
               history.slice(-10).map((step, index) => (
                 <div key={index} className="tape-entry" role="listitem">

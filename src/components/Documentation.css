@@ -1,0 +1,213 @@
+.documentation-page {
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 2rem;
+  line-height: 1.6;
+  color: #333;
+}
+
+.doc-header {
+  text-align: center;
+  margin-bottom: 3rem;
+  padding-bottom: 2rem;
+  border-bottom: 2px solid #e0e0e0;
+}
+
+.doc-header h1 {
+  font-size: 2.5rem;
+  margin-bottom: 0.5rem;
+  color: #2c3e50;
+}
+
+.doc-header p {
+  font-size: 1.2rem;
+  color: #666;
+  margin: 0;
+}
+
+.doc-content {
+  display: flex;
+  flex-direction: column;
+  gap: 3rem;
+}
+
+.doc-section {
+  background: #fff;
+  border-radius: 12px;
+  padding: 2rem;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  border: 1px solid #e0e0e0;
+}
+
+.doc-section h2 {
+  font-size: 1.8rem;
+  margin-bottom: 1rem;
+  color: #2c3e50;
+  border-bottom: 2px solid #3498db;
+  padding-bottom: 0.5rem;
+}
+
+.doc-section h3 {
+  font-size: 1.3rem;
+  margin: 1.5rem 0 0.75rem 0;
+  color: #34495e;
+}
+
+.doc-section p {
+  margin-bottom: 1rem;
+  color: #555;
+}
+
+.doc-section ul {
+  margin: 0.5rem 0 1rem 1.5rem;
+  color: #555;
+}
+
+.doc-section li {
+  margin-bottom: 0.5rem;
+}
+
+.doc-section li strong {
+  color: #2c3e50;
+}
+
+.app-details {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 2rem;
+  align-items: start;
+}
+
+.app-info {
+  flex: 1;
+}
+
+.app-link {
+  display: flex;
+  align-items: center;
+}
+
+.doc-app-link {
+  display: inline-block;
+  background: linear-gradient(135deg, #3498db 0%, #2980b9 100%);
+  color: white;
+  text-decoration: none;
+  padding: 1rem 1.5rem;
+  border-radius: 8px;
+  font-weight: 500;
+  transition: all 0.3s ease;
+  border: 2px solid transparent;
+  text-align: center;
+  min-width: 180px;
+}
+
+.doc-app-link:hover {
+  background: linear-gradient(135deg, #2980b9 0%, #3498db 100%);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(52, 152, 219, 0.3);
+}
+
+.doc-app-link:focus {
+  outline: none;
+  border-color: #fff;
+  box-shadow: 0 0 0 3px rgba(52, 152, 219, 0.3);
+}
+
+.getting-started-links {
+  margin-top: 2rem;
+  text-align: center;
+}
+
+.doc-home-link {
+  display: inline-block;
+  background: linear-gradient(135deg, #27ae60 0%, #2ecc71 100%);
+  color: white;
+  text-decoration: none;
+  padding: 1rem 2rem;
+  border-radius: 8px;
+  font-weight: 500;
+  transition: all 0.3s ease;
+  border: 2px solid transparent;
+}
+
+.doc-home-link:hover {
+  background: linear-gradient(135deg, #2ecc71 0%, #27ae60 100%);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(46, 204, 113, 0.3);
+}
+
+.doc-home-link:focus {
+  outline: none;
+  border-color: #fff;
+  box-shadow: 0 0 0 3px rgba(46, 204, 113, 0.3);
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+  .documentation-page {
+    padding: 1rem;
+  }
+
+  .doc-header h1 {
+    font-size: 2rem;
+  }
+
+  .doc-section {
+    padding: 1.5rem;
+  }
+
+  .app-details {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+
+  .app-link {
+    justify-content: center;
+  }
+
+  .doc-app-link {
+    width: 100%;
+  }
+}
+
+/* Dark mode support */
+@media (prefers-color-scheme: dark) {
+  .documentation-page {
+    color: #e0e0e0;
+  }
+
+  .doc-header h1 {
+    color: #ffffff;
+  }
+
+  .doc-header p {
+    color: #b0b0b0;
+  }
+
+  .doc-section {
+    background: #2c2c2c;
+    border-color: #404040;
+    color: #e0e0e0;
+  }
+
+  .doc-section h2 {
+    color: #ffffff;
+    border-bottom-color: #3498db;
+  }
+
+  .doc-section h3 {
+    color: #f0f0f0;
+  }
+
+  .doc-section p {
+    color: #d0d0d0;
+  }
+
+  .doc-section ul {
+    color: #d0d0d0;
+  }
+
+  .doc-section li strong {
+    color: #ffffff;
+  }
+}
