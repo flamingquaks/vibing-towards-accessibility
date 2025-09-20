@@ -22,11 +22,13 @@ export default function Solitaire() {
   const [moves, setMoves] = useState(0);
   const [gameWon, setGameWon] = useState(false);
 
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   const suits: Suit[] = ['♠', '♥', '♦', '♣'];
-  const ranks: Rank[] = ['A', '2', '3', '4', '5', '6', '7', '8', '9', '10', 'J', 'Q', 'K'];
+  
 
   const createDeck = useCallback((): Card[] => {
     const newDeck: Card[] = [];
+    const ranks: Rank[] = ['A', '2', '3', '4', '5', '6', '7', '8', '9', '10', 'J', 'Q', 'K'];
     suits.forEach(suit => {
       ranks.forEach(rank => {
         newDeck.push({
@@ -38,7 +40,7 @@ export default function Solitaire() {
       });
     });
     return shuffleDeck(newDeck);
-  }, []);
+  }, [suits]);
 
   const shuffleDeck = (deck: Card[]): Card[] => {
     const shuffled = [...deck];
@@ -229,7 +231,7 @@ export default function Solitaire() {
                   onClick={() => handleCardClick('waste', waste.length - 1)}
                   role="button"
                   tabIndex={0}
-                  aria-label={`${waste[waste.length - 1].rank} of ${waste[waste.length - 1].suit}`}
+                  aria-label={t('solitaire.cardLabel', { rank: waste[waste.length - 1].rank, suit: waste[waste.length - 1].suit })}
                 >
                   <span className={`card-content ${waste[waste.length - 1].color}`}>
                     {waste[waste.length - 1].rank}{waste[waste.length - 1].suit}
@@ -276,7 +278,7 @@ export default function Solitaire() {
                   onClick={() => handleCardClick(`tableau${columnIndex}`, cardIndex)}
                   role="button"
                   tabIndex={0}
-                  aria-label={`${card.rank} of ${card.suit}`}
+                  aria-label={t('solitaire.cardLabel', { rank: card.rank, suit: card.suit })}
                 >
                   <span className={`card-content ${card.color}`}>
                     {card.rank}{card.suit}
