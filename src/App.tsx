@@ -6,11 +6,12 @@ import Calculator from './apps/Calculator';
 import RainbowGenerator from './apps/RainbowGenerator';
 import Solitaire from './apps/Solitaire';
 import ArcadeGame from './apps/ArcadeGame';
+import { APP_BASENAME } from './constants';
 import './App.css';
 
 function App() {
   return (
-    <Router basename="/vibing-towards-accessibility">
+    <Router basename={APP_BASENAME}>
       <Layout>
         <Routes>
           <Route path="/" element={<HomePage />} />
