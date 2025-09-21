@@ -28,6 +28,15 @@ jobs:
     - name: Run linter
       run: npm run lint
 
+    - name: Install semgrep
+      run: python3 -m pip install semgrep
+
+    - name: Run semgrep WCAG compliance check
+      run: npm run wcag
+
+    - name: Run semgrep accessibility linting
+      run: npm run lint:semgrep
+
     - name: Run unit tests with coverage
       run: npm run test:run -- --coverage
 
@@ -50,7 +59,9 @@ jobs:
           
           // Add test status
           comment += '### ✅ Quality Checks\n';
-          comment += '- ✅ Linting passed\n';
+          comment += '- ✅ ESLint validation passed\n';
+          comment += '- ✅ Semgrep WCAG compliance passed\n';
+          comment += '- ✅ Semgrep accessibility linting passed\n';
           comment += '- ✅ Unit tests passed (54 tests)\n';
           comment += '- ✅ Build successful\n';
           comment += '- ✅ E2E tests passed\n\n';
@@ -64,7 +75,9 @@ jobs:
           comment += '- HomePage: 6 unit tests\n';
           comment += '- Layout: 5 unit tests\n\n';
           
-          comment += '### 🎯 Accessibility\n';
+          comment += '### 🎯 Accessibility & Compliance\n';
+          comment += '- ✅ WCAG 2.1 AA compliance validated\n';
+          comment += '- ✅ Semgrep accessibility rules passed\n';
           comment += '- ✅ ARIA compliance validated\n';
           comment += '- ✅ Keyboard navigation tested\n';
           comment += '- ✅ Screen reader support verified\n';

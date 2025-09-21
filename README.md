@@ -6,6 +6,23 @@ A React + TypeScript + Vite application focused on creating accessible web exper
 
 The application is automatically deployed to GitHub Pages: [https://flamingquaks.github.io/vibing-towards-accessibility](https://flamingquaks.github.io/vibing-towards-accessibility)
 
+## ♿ Accessibility & Compliance
+
+This project prioritizes accessibility and WCAG 2.1 AA compliance through multiple layers of validation:
+
+### Automated Accessibility Testing
+- **Semgrep WCAG Rules**: Custom static analysis rules for WCAG 2.1 AA compliance
+- **Playwright E2E Tests**: Automated accessibility testing in real browser environments
+- **ESLint**: Code quality and accessibility linting
+- **Unit Tests**: Comprehensive testing with accessibility assertions
+
+### WCAG Compliance Tools
+- `npm run wcag` - Check critical WCAG compliance issues
+- `npm run lint:semgrep` - Full accessibility linting with semgrep
+- `npm run test:e2e` - End-to-end accessibility testing
+
+For detailed information about our accessibility testing setup, see [SEMGREP.md](./SEMGREP.md).
+
 ## 🔧 Development
 
 This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
@@ -20,6 +37,10 @@ Currently, two official plugins are available:
 - `npm run dev` - Start development server
 - `npm run build` - Build for production
 - `npm run lint` - Run ESLint
+- `npm run lint:semgrep` - Run semgrep WCAG compliance checks
+- `npm run lint:all` - Run both ESLint and semgrep
+- `npm run wcag` - Run critical WCAG compliance checks only
+- `npm run security` - Run semgrep security audit
 - `npm run preview` - Preview production build locally
 - `npm run deploy` - Build for deployment
 

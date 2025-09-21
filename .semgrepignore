@@ -1,0 +1,16 @@
+# Ignore build and dependency directories
+dist/
+node_modules/
+.git/
+
+# Ignore test files for some rules
+*.test.tsx
+*.test.ts
+*.spec.tsx
+*.spec.ts
+
+# Ignore config files
+vite.config.ts
+vitest.config.ts
+playwright.config.ts
+eslint.config.js
