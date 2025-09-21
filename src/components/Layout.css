@@ -1,15 +1,22 @@
 .layout {
   min-height: 100vh;
+  display: flex;
+  flex-direction: column;
 }
 
 .layout-header {
-  background: #f8f9fa;
-  padding: 1rem 2rem;
-  border-bottom: 1px solid #e9ecef;
+  background: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(20px);
+  border-bottom: 1px solid var(--color-gray-200);
+  padding: var(--space-lg) var(--space-xl);
   display: flex;
   justify-content: space-between;
   align-items: center;
-  gap: 1rem;
+  gap: var(--space-lg);
+  box-shadow: var(--shadow-sm);
+  position: sticky;
+  top: 0;
+  z-index: 50;
 }
 
 .layout-nav {
@@ -19,40 +26,51 @@
 .layout-controls {
   display: flex;
   align-items: center;
-  gap: 1rem;
+  gap: var(--space-lg);
 }
 
 .home-link {
-  color: #007bff;
+  color: var(--color-primary);
   text-decoration: none;
-  font-weight: 500;
-  padding: 0.5rem 1rem;
-  border-radius: 6px;
+  font-weight: 600;
+  padding: var(--space-sm) var(--space-lg);
+  border-radius: var(--radius-lg);
   transition: all 0.2s ease;
   border: 2px solid transparent;
+  background: rgba(99, 102, 241, 0.05);
+  display: flex;
+  align-items: center;
+  gap: var(--space-sm);
+  font-size: 0.875rem;
+  letter-spacing: -0.025em;
 }
 
 .home-link:hover {
-  background: #e3f2fd;
-  color: #0056b3;
+  background: rgba(99, 102, 241, 0.1);
+  color: var(--color-primary-dark);
+  transform: translateY(-1px);
+  box-shadow: var(--shadow-md);
 }
 
 .home-link:focus {
   outline: none;
-  border-color: #007bff;
-  box-shadow: 0 0 0 2px rgba(0, 123, 255, 0.25);
+  border-color: var(--color-primary);
+  box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.2);
 }
 
 .layout-content {
   flex: 1;
+  display: flex;
+  flex-direction: column;
 }
 
 /* Responsive design */
 @media (max-width: 768px) {
   .layout-header {
+    padding: var(--space-md) var(--space-lg);
     flex-direction: column;
     align-items: stretch;
-    gap: 0.5rem;
+    gap: var(--space-md);
   }
   
   .layout-nav {
@@ -61,28 +79,26 @@
   
   .layout-controls {
     order: 1;
-    justify-content: flex-end;
+    justify-content: center;
+  }
+  
+  .home-link {
+    justify-content: center;
   }
 }
 
 /* Dark mode support */
 @media (prefers-color-scheme: dark) {
   .layout-header {
-    background: #2a2a2a;
-    border-bottom-color: #444;
+    background: rgba(31, 41, 55, 0.95);
+    border-bottom-color: var(--color-gray-700);
   }
   
   .home-link {
-    color: #66b3ff;
+    background: rgba(99, 102, 241, 0.1);
   }
   
   .home-link:hover {
-    background: rgba(102, 179, 255, 0.1);
-    color: #80c7ff;
-  }
-  
-  .home-link:focus {
-    border-color: #66b3ff;
-    box-shadow: 0 0 0 2px rgba(102, 179, 255, 0.25);
+    background: rgba(99, 102, 241, 0.15);
   }
 }
