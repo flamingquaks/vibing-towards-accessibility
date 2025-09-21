@@ -8,14 +8,14 @@ describe('Calculator', () => {
     render(<Calculator />);
     
     expect(screen.getByRole('heading', { name: 'Calculator', level: 1 })).toBeInTheDocument();
-    expect(screen.getByRole('heading', { name: 'Calculation History', level: 2 })).toBeInTheDocument();
+    expect(screen.getByRole('heading', { name: 'Calculation Tape', level: 2 })).toBeInTheDocument();
     expect(screen.getByText('No calculations yet')).toBeInTheDocument();
   });
 
   it('displays initial value of 0', () => {
     render(<Calculator />);
     
-    const display = screen.getByLabelText(/Current value/);
+    const display = screen.getByLabelText(/Display: 0/);
     expect(display).toHaveTextContent('0');
   });
 
@@ -23,33 +23,33 @@ describe('Calculator', () => {
     render(<Calculator />);
     
     for (let i = 0; i <= 9; i++) {
-      expect(screen.getByRole('button', { name: `${i} button` })).toBeInTheDocument();
+      expect(screen.getByRole('button', { name: `Number ${i}` })).toBeInTheDocument();
     }
   });
 
   it('renders all operation buttons', () => {
     render(<Calculator />);
     
-    expect(screen.getByRole('button', { name: '+ button' })).toBeInTheDocument();
-    expect(screen.getByRole('button', { name: '- button' })).toBeInTheDocument();
-    expect(screen.getByRole('button', { name: '× button' })).toBeInTheDocument();
-    expect(screen.getByRole('button', { name: '÷ button' })).toBeInTheDocument();
-    expect(screen.getByRole('button', { name: '= button' })).toBeInTheDocument();
-    expect(screen.getByRole('button', { name: '. button' })).toBeInTheDocument();
-    expect(screen.getByRole('button', { name: 'AC button' })).toBeInTheDocument();
-    expect(screen.getByRole('button', { name: 'CE button' })).toBeInTheDocument();
+    expect(screen.getByRole('button', { name: 'Add' })).toBeInTheDocument();
+    expect(screen.getByRole('button', { name: 'Subtract' })).toBeInTheDocument();
+    expect(screen.getByRole('button', { name: 'Multiply' })).toBeInTheDocument();
+    expect(screen.getByRole('button', { name: 'Divide' })).toBeInTheDocument();
+    expect(screen.getByRole('button', { name: 'Equals' })).toBeInTheDocument();
+    expect(screen.getByRole('button', { name: 'Decimal point' })).toBeInTheDocument();
+    expect(screen.getByRole('button', { name: 'Clear all' })).toBeInTheDocument();
+    expect(screen.getByRole('button', { name: 'Clear entry' })).toBeInTheDocument();
   });
 
   it('updates display when number buttons are clicked', async () => {
     const user = userEvent.setup();
     render(<Calculator />);
     
-    const display = screen.getByLabelText(/Current value/);
+    const display = screen.getByLabelText(/Display: /);
     
-    await user.click(screen.getByRole('button', { name: '5 button' }));
+    await user.click(screen.getByRole('button', { name: 'Number 5' }));
     expect(display).toHaveTextContent('5');
     
-    await user.click(screen.getByRole('button', { name: '3 button' }));
+    await user.click(screen.getByRole('button', { name: 'Number 3' }));
     expect(display).toHaveTextContent('53');
   });
 
@@ -57,13 +57,13 @@ describe('Calculator', () => {
     const user = userEvent.setup();
     render(<Calculator />);
     
-    const display = screen.getByLabelText(/Current value/);
+    const display = screen.getByLabelText(/Display: /);
     
     // 5 + 3 = 8
-    await user.click(screen.getByRole('button', { name: '5 button' }));
-    await user.click(screen.getByRole('button', { name: '+ button' }));
-    await user.click(screen.getByRole('button', { name: '3 button' }));
-    await user.click(screen.getByRole('button', { name: '= button' }));
+    await user.click(screen.getByRole('button', { name: 'Number 5' }));
+    await user.click(screen.getByRole('button', { name: 'Add' }));
+    await user.click(screen.getByRole('button', { name: 'Number 3' }));
+    await user.click(screen.getByRole('button', { name: 'Equals' }));
     
     expect(display).toHaveTextContent('8');
   });
@@ -72,13 +72,13 @@ describe('Calculator', () => {
     const user = userEvent.setup();
     render(<Calculator />);
     
-    const display = screen.getByLabelText(/Current value/);
+    const display = screen.getByLabelText(/Display: /);
     
     // 9 - 4 = 5
-    await user.click(screen.getByRole('button', { name: '9 button' }));
-    await user.click(screen.getByRole('button', { name: '- button' }));
-    await user.click(screen.getByRole('button', { name: '4 button' }));
-    await user.click(screen.getByRole('button', { name: '= button' }));
+    await user.click(screen.getByRole('button', { name: 'Number 9' }));
+    await user.click(screen.getByRole('button', { name: 'Subtract' }));
+    await user.click(screen.getByRole('button', { name: 'Number 4' }));
+    await user.click(screen.getByRole('button', { name: 'Equals' }));
     
     expect(display).toHaveTextContent('5');
   });
@@ -87,13 +87,13 @@ describe('Calculator', () => {
     const user = userEvent.setup();
     render(<Calculator />);
     
-    const display = screen.getByLabelText(/Current value/);
+    const display = screen.getByLabelText(/Display: /);
     
     // 6 × 7 = 42
-    await user.click(screen.getByRole('button', { name: '6 button' }));
-    await user.click(screen.getByRole('button', { name: '× button' }));
-    await user.click(screen.getByRole('button', { name: '7 button' }));
-    await user.click(screen.getByRole('button', { name: '= button' }));
+    await user.click(screen.getByRole('button', { name: 'Number 6' }));
+    await user.click(screen.getByRole('button', { name: 'Multiply' }));
+    await user.click(screen.getByRole('button', { name: 'Number 7' }));
+    await user.click(screen.getByRole('button', { name: 'Equals' }));
     
     expect(display).toHaveTextContent('42');
   });
@@ -102,14 +102,14 @@ describe('Calculator', () => {
     const user = userEvent.setup();
     render(<Calculator />);
     
-    const display = screen.getByLabelText(/Current value/);
+    const display = screen.getByLabelText(/Display: /);
     
     // 15 ÷ 3 = 5
-    await user.click(screen.getByRole('button', { name: '1 button' }));
-    await user.click(screen.getByRole('button', { name: '5 button' }));
-    await user.click(screen.getByRole('button', { name: '÷ button' }));
-    await user.click(screen.getByRole('button', { name: '3 button' }));
-    await user.click(screen.getByRole('button', { name: '= button' }));
+    await user.click(screen.getByRole('button', { name: 'Number 1' }));
+    await user.click(screen.getByRole('button', { name: 'Number 5' }));
+    await user.click(screen.getByRole('button', { name: 'Divide' }));
+    await user.click(screen.getByRole('button', { name: 'Number 3' }));
+    await user.click(screen.getByRole('button', { name: 'Equals' }));
     
     expect(display).toHaveTextContent('5');
   });
@@ -119,10 +119,10 @@ describe('Calculator', () => {
     render(<Calculator />);
     
     // Perform a calculation
-    await user.click(screen.getByRole('button', { name: '5 button' }));
-    await user.click(screen.getByRole('button', { name: '+ button' }));
-    await user.click(screen.getByRole('button', { name: '3 button' }));
-    await user.click(screen.getByRole('button', { name: '= button' }));
+    await user.click(screen.getByRole('button', { name: 'Number 5' }));
+    await user.click(screen.getByRole('button', { name: 'Add' }));
+    await user.click(screen.getByRole('button', { name: 'Number 3' }));
+    await user.click(screen.getByRole('button', { name: 'Equals' }));
     
     // Check that "No calculations yet" is gone
     expect(screen.queryByText('No calculations yet')).not.toBeInTheDocument();
@@ -131,24 +131,24 @@ describe('Calculator', () => {
     expect(screen.getByText('5 + 3')).toBeInTheDocument();
     
     // Check the result in the history area specifically
-    const historySection = screen.getByLabelText('Calculation history');
+    const historySection = screen.getByLabelText('Calculation Tape');
     expect(historySection).toHaveTextContent('8');
   });
 
-  it('clears display with AC button', async () => {
+  it('clears display with Clear all', async () => {
     const user = userEvent.setup();
     render(<Calculator />);
     
-    const display = screen.getByLabelText(/Current value/);
+    const display = screen.getByLabelText(/Display: /);
     
     // Enter some numbers
-    await user.click(screen.getByRole('button', { name: '1 button' }));
-    await user.click(screen.getByRole('button', { name: '2 button' }));
-    await user.click(screen.getByRole('button', { name: '3 button' }));
+    await user.click(screen.getByRole('button', { name: 'Number 1' }));
+    await user.click(screen.getByRole('button', { name: 'Number 2' }));
+    await user.click(screen.getByRole('button', { name: 'Number 3' }));
     expect(display).toHaveTextContent('123');
     
     // Clear all
-    await user.click(screen.getByRole('button', { name: 'AC button' }));
+    await user.click(screen.getByRole('button', { name: 'Clear all' }));
     expect(display).toHaveTextContent('0');
   });
 
@@ -156,17 +156,17 @@ describe('Calculator', () => {
     const user = userEvent.setup();
     render(<Calculator />);
     
-    const display = screen.getByLabelText(/Current value/);
+    const display = screen.getByLabelText(/Display: /);
     
     // 3.5 + 2.1 = 5.6
-    await user.click(screen.getByRole('button', { name: '3 button' }));
-    await user.click(screen.getByRole('button', { name: '. button' }));
-    await user.click(screen.getByRole('button', { name: '5 button' }));
-    await user.click(screen.getByRole('button', { name: '+ button' }));
-    await user.click(screen.getByRole('button', { name: '2 button' }));
-    await user.click(screen.getByRole('button', { name: '. button' }));
-    await user.click(screen.getByRole('button', { name: '1 button' }));
-    await user.click(screen.getByRole('button', { name: '= button' }));
+    await user.click(screen.getByRole('button', { name: 'Number 3' }));
+    await user.click(screen.getByRole('button', { name: 'Decimal point' }));
+    await user.click(screen.getByRole('button', { name: 'Number 5' }));
+    await user.click(screen.getByRole('button', { name: 'Add' }));
+    await user.click(screen.getByRole('button', { name: 'Number 2' }));
+    await user.click(screen.getByRole('button', { name: 'Decimal point' }));
+    await user.click(screen.getByRole('button', { name: 'Number 1' }));
+    await user.click(screen.getByRole('button', { name: 'Equals' }));
     
     expect(display).toHaveTextContent('5.6');
   });
@@ -175,10 +175,10 @@ describe('Calculator', () => {
     render(<Calculator />);
     
     // Display should have aria-label
-    expect(screen.getByLabelText(/Current value/)).toBeInTheDocument();
+    expect(screen.getByLabelText(/Display: /)).toBeInTheDocument();
     
     // History section should be labeled
-    expect(screen.getByLabelText('Calculation history')).toBeInTheDocument();
+    expect(screen.getByLabelText('Calculation Tape')).toBeInTheDocument();
     
     // All buttons should have accessible names
     const buttons = screen.getAllByRole('button');
