@@ -75,7 +75,10 @@
     "wastePile": "Pila de descarte",
     "foundation": "Fundación {{suit}}",
     "tableau": "Pila del tableau {{index}}",
-    "cardLabel": "{{rank}} de {{suit}}"
+    "cardLabel": "{{rank}} de {{suit}}",
+    "drawMode": "Robar:",
+    "oneCard": "1 Carta",
+    "threeCards": "3 Cartas"
   },
   "arcadeGame": {
     "title": "🐍 Juego de la serpiente",

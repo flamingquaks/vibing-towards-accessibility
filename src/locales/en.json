@@ -75,7 +75,10 @@
     "wastePile": "Waste pile",
     "foundation": "Foundation {{suit}}",
     "tableau": "Tableau pile {{index}}",
-    "cardLabel": "{{rank}} of {{suit}}"
+    "cardLabel": "{{rank}} of {{suit}}",
+    "drawMode": "Draw:",
+    "oneCard": "1 Card",
+    "threeCards": "3 Cards"
   },
   "arcadeGame": {
     "title": "🐍 Snake Game",

@@ -23,6 +23,7 @@ export default function Solitaire() {
   const [selectedCard, setSelectedCard] = useState<{ pile: string, index: number } | null>(null);
   const [moves, setMoves] = useState(0);
   const [gameWon, setGameWon] = useState(false);
+  const [drawMode, setDrawMode] = useState<1 | 3>(1);
 
   const createDeck = useCallback((): Card[] => {
     const newDeck: Card[] = [];
@@ -58,6 +59,23 @@ export default function Solitaire() {
       default: return parseInt(rank);
     }
   };
+
+  const renderCard = (card: Card, additionalClasses = '', onClick?: () => void, ariaLabel?: string) => (
+    <div 
+      className={`card ${additionalClasses}`}
+      onClick={onClick}
+      role={onClick ? "button" : undefined}
+      tabIndex={onClick ? 0 : undefined}
+      aria-label={ariaLabel}
+    >
+      <span className={`card-content ${card.color}`}>
+        {card.rank}
+      </span>
+      <span className={`card-suit-center ${card.color}`}>
+        {card.suit}
+      </span>
+    </div>
+  );
 
   const canPlaceOnFoundation = (card: Card, foundation: Card[]): boolean => {
     if (foundation.length === 0) {
@@ -98,9 +116,10 @@ export default function Solitaire() {
 
   const drawFromStock = () => {
     if (stock.length > 0) {
-      const newWaste = [...waste, stock[0]];
-      const newStock = stock.slice(1);
-      setWaste(newWaste);
+      const cardsToDraw = Math.min(drawMode, stock.length);
+      const newWasteCards = stock.slice(0, cardsToDraw);
+      const newStock = stock.slice(cardsToDraw);
+      setWaste(prev => [...prev, ...newWasteCards]);
       setStock(newStock);
       setMoves(prev => prev + 1);
     } else if (waste.length > 0) {
@@ -197,6 +216,18 @@ export default function Solitaire() {
       <div className="solitaire-header">
         <h1>{t('solitaire.title')}</h1>
         <div className="game-stats">
+          <div className="draw-mode-selector">
+            <label htmlFor="draw-mode">{t('solitaire.drawMode')} </label>
+            <select
+              id="draw-mode"
+              value={drawMode}
+              onChange={(e) => setDrawMode(Number(e.target.value) as 1 | 3)}
+              className="draw-mode-select"
+            >
+              <option value={1}>{t('solitaire.oneCard')}</option>
+              <option value={3}>{t('solitaire.threeCards')}</option>
+            </select>
+          </div>
           <span>{t('solitaire.moves', { count: moves })}</span>
           <button onClick={newGame} className="new-game-btn">
             {t('solitaire.newGame')}
@@ -223,19 +254,14 @@ export default function Solitaire() {
               {stock.length > 0 ? '🂠' : '⭕'}
             </div>
             <div className="waste pile" aria-label={t('solitaire.wastePile')}>
-              {waste.length > 0 && (
-                <div 
-                  className={`card ${selectedCard?.pile === 'waste' ? 'selected' : ''}`}
-                  onClick={() => handleCardClick('waste', waste.length - 1)}
-                  role="button"
-                  tabIndex={0}
-                  aria-label={t('solitaire.cardLabel', { rank: waste[waste.length - 1].rank, suit: waste[waste.length - 1].suit })}
-                >
-                  <span className={`card-content ${waste[waste.length - 1].color}`}>
-                    {waste[waste.length - 1].rank}{waste[waste.length - 1].suit}
-                  </span>
-                </div>
-              )}
+              {waste.length > 0 && 
+                renderCard(
+                  waste[waste.length - 1],
+                  selectedCard?.pile === 'waste' ? 'selected' : '',
+                  () => handleCardClick('waste', waste.length - 1),
+                  t('solitaire.cardLabel', { rank: waste[waste.length - 1].rank, suit: waste[waste.length - 1].suit })
+                )
+              }
             </div>
           </div>
 
@@ -249,13 +275,9 @@ export default function Solitaire() {
                 tabIndex={0}
                 aria-label={t('solitaire.foundation', { suit: SUITS[index] })}
               >
-                {foundation.length > 0 ? (
-                  <div className="card">
-                    <span className={`card-content ${foundation[foundation.length - 1].color}`}>
-                      {foundation[foundation.length - 1].rank}{foundation[foundation.length - 1].suit}
-                    </span>
-                  </div>
-                ) : (
+                {foundation.length > 0 ? 
+                  renderCard(foundation[foundation.length - 1])
+                : (
                   <div className="empty-foundation">
                     {SUITS[index]}
                   </div>
@@ -279,7 +301,10 @@ export default function Solitaire() {
                   aria-label={t('solitaire.cardLabel', { rank: card.rank, suit: card.suit })}
                 >
                   <span className={`card-content ${card.color}`}>
-                    {card.rank}{card.suit}
+                    {card.rank}
+                  </span>
+                  <span className={`card-suit-center ${card.color}`}>
+                    {card.suit}
                   </span>
                 </div>
               ))}

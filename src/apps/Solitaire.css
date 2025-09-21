@@ -26,6 +26,28 @@
   font-size: 1.2rem;
 }
 
+.draw-mode-selector {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 1rem;
+}
+
+.draw-mode-select {
+  padding: 0.25rem 0.5rem;
+  border-radius: 4px;
+  border: 1px solid #ccc;
+  background: white;
+  font-size: 0.9rem;
+  cursor: pointer;
+}
+
+.draw-mode-select:focus {
+  outline: none;
+  border-color: #007bff;
+  box-shadow: 0 0 0 2px rgba(0, 123, 255, 0.25);
+}
+
 .new-game-btn {
   padding: 0.75rem 1.5rem;
   background: #28a745;
@@ -133,12 +155,12 @@
   border-radius: 8px;
   border: 2px solid #333;
   display: flex;
-  align-items: center;
-  justify-content: center;
+  flex-direction: column;
   cursor: pointer;
   transition: all 0.3s ease;
   position: absolute;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+  padding: 4px;
 }
 
 .card:hover {
@@ -159,9 +181,22 @@
 }
 
 .card-content {
-  font-size: 1rem;
+  font-size: 0.75rem;
   font-weight: bold;
-  text-align: center;
+  text-align: left;
+  line-height: 1;
+  position: absolute;
+  top: 4px;
+  left: 4px;
+}
+
+.card-suit-center {
+  font-size: 2.5rem;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  opacity: 0.6;
 }
 
 .card-content.red {
@@ -220,6 +255,11 @@
     text-align: center;
   }
   
+  .game-stats {
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+  
   .solitaire-header h1 {
     font-size: 2rem;
   }
@@ -246,6 +286,17 @@
     width: 60px;
     height: 84px;
     font-size: 0.8rem;
+    padding: 2px;
+  }
+  
+  .card-content {
+    font-size: 0.6rem;
+    top: 2px;
+    left: 2px;
+  }
+  
+  .card-suit-center {
+    font-size: 1.8rem;
   }
   
   .tableau-column {
