@@ -23,9 +23,9 @@ describe('RainbowGenerator', () => {
     render(<RainbowGenerator />);
     
     expect(screen.getByRole('heading', { name: 'Rainbow Generator', level: 1 })).toBeInTheDocument();
-    expect(screen.getByRole('button', { name: 'Add a single rainbow' })).toBeInTheDocument();
-    expect(screen.getByRole('button', { name: 'Start generating rainbows automatically' })).toBeInTheDocument();
-    expect(screen.getByRole('button', { name: 'Clear all rainbows' })).toBeInTheDocument();
+    expect(screen.getByRole('button', { name: 'Add Rainbow' })).toBeInTheDocument();
+    expect(screen.getByRole('button', { name: 'Start Auto' })).toBeInTheDocument();
+    expect(screen.getByRole('button', { name: 'Clear All' })).toBeInTheDocument();
   });
 
   it('displays initial state correctly', () => {
@@ -40,7 +40,7 @@ describe('RainbowGenerator', () => {
     const user = userEvent.setup();
     render(<RainbowGenerator />);
     
-    const addButton = screen.getByRole('button', { name: 'Add a single rainbow' });
+    const addButton = screen.getByRole('button', { name: 'Add Rainbow' });
     await user.click(addButton);
     
     expect(screen.getByText('1')).toBeInTheDocument(); // Updated count
@@ -53,7 +53,7 @@ describe('RainbowGenerator', () => {
     const user = userEvent.setup();
     render(<RainbowGenerator />);
     
-    const addButton = screen.getByRole('button', { name: 'Add a single rainbow' });
+    const addButton = screen.getByRole('button', { name: 'Add Rainbow' });
     
     await user.click(addButton);
     expect(screen.getByText('1')).toBeInTheDocument();
@@ -70,13 +70,13 @@ describe('RainbowGenerator', () => {
     render(<RainbowGenerator />);
     
     // Add some rainbows first
-    const addButton = screen.getByRole('button', { name: 'Add a single rainbow' });
+    const addButton = screen.getByRole('button', { name: 'Add Rainbow' });
     await user.click(addButton);
     await user.click(addButton);
     expect(screen.getByText('2')).toBeInTheDocument();
     
     // Clear all
-    const clearButton = screen.getByRole('button', { name: 'Clear all rainbows' });
+    const clearButton = screen.getByRole('button', { name: 'Clear All' });
     await user.click(clearButton);
     
     expect(screen.getByText('0')).toBeInTheDocument();
@@ -87,7 +87,7 @@ describe('RainbowGenerator', () => {
     const user = userEvent.setup();
     render(<RainbowGenerator />);
     
-    const autoButton = screen.getByRole('button', { name: 'Start generating rainbows automatically' });
+    const autoButton = screen.getByRole('button', { name: 'Start Auto' });
     
     // Start auto-generation
     await user.click(autoButton);
@@ -98,7 +98,7 @@ describe('RainbowGenerator', () => {
     const stopButton = screen.getByRole('button', { name: 'Stop generating rainbows' });
     await user.click(stopButton);
     expect(screen.getByText('Manual mode')).toBeInTheDocument();
-    expect(screen.getByRole('button', { name: 'Start generating rainbows automatically' })).toBeInTheDocument();
+    expect(screen.getByRole('button', { name: 'Start Auto' })).toBeInTheDocument();
   });
 
   it('adds rainbow when clicking on the playground area', async () => {
