@@ -1,51 +1,54 @@
 :root {
-  /* Modern font stack with Inter as primary */
-  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
-  line-height: 1.6;
+  /* Professional font stack */
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
+  line-height: 1.5;
   font-weight: 400;
 
-  /* Enhanced color palette */
-  --color-primary: #6366f1;
-  --color-primary-light: #818cf8;
-  --color-primary-dark: #4f46e5;
-  --color-secondary: #f59e0b;
-  --color-success: #10b981;
-  --color-warning: #f59e0b;
-  --color-error: #ef4444;
+  /* Professional color palette inspired by Linear/GitHub */
+  --color-primary: #2563eb;
+  --color-primary-light: #3b82f6;
+  --color-primary-dark: #1d4ed8;
+  --color-accent: #0ea5e9;
+  --color-success: #059669;
+  --color-warning: #d97706;
+  --color-error: #dc2626;
   
-  /* Neutral colors */
-  --color-gray-50: #f9fafb;
-  --color-gray-100: #f3f4f6;
-  --color-gray-200: #e5e7eb;
-  --color-gray-300: #d1d5db;
-  --color-gray-400: #9ca3af;
-  --color-gray-500: #6b7280;
-  --color-gray-600: #4b5563;
-  --color-gray-700: #374151;
-  --color-gray-800: #1f2937;
-  --color-gray-900: #111827;
+  /* Professional neutral colors */
+  --color-gray-25: #fcfcfd;
+  --color-gray-50: #f8fafc;
+  --color-gray-100: #f1f5f9;
+  --color-gray-200: #e2e8f0;
+  --color-gray-300: #cbd5e1;
+  --color-gray-400: #94a3b8;
+  --color-gray-500: #64748b;
+  --color-gray-600: #475569;
+  --color-gray-700: #334155;
+  --color-gray-800: #1e293b;
+  --color-gray-900: #0f172a;
   
-  /* Spacing scale */
+  /* Professional spacing scale */
   --space-xs: 0.25rem;
   --space-sm: 0.5rem;
   --space-md: 1rem;
   --space-lg: 1.5rem;
   --space-xl: 2rem;
-  --space-2xl: 3rem;
-  --space-3xl: 4rem;
+  --space-2xl: 2.5rem;
+  --space-3xl: 3rem;
+  --space-4xl: 4rem;
   
-  /* Border radius */
-  --radius-sm: 0.375rem;
-  --radius-md: 0.5rem;
-  --radius-lg: 0.75rem;
-  --radius-xl: 1rem;
-  --radius-2xl: 1.5rem;
+  /* Refined border radius */
+  --radius-sm: 0.25rem;
+  --radius-md: 0.375rem;
+  --radius-lg: 0.5rem;
+  --radius-xl: 0.75rem;
+  --radius-2xl: 1rem;
   
-  /* Shadows */
+  /* Professional shadows */
   --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
-  --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
-  --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
-  --shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+  --shadow-md: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06);
+  --shadow-lg: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+  --shadow-xl: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+  --shadow-2xl: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
 
   color-scheme: light dark;
   color: var(--color-gray-800);
@@ -85,11 +88,8 @@ body {
   min-width: 320px;
   min-height: 100vh;
   font-family: inherit;
-  background: linear-gradient(135deg, 
-    rgba(99, 102, 241, 0.1) 0%, 
-    rgba(168, 85, 247, 0.05) 50%, 
-    rgba(236, 72, 153, 0.1) 100%);
-  background-attachment: fixed;
+  background: #fafbfc;
+  color: var(--color-gray-900);
 }
 
 #root {
@@ -106,11 +106,10 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 h1 {
-  font-size: clamp(2rem, 5vw, 3.5rem);
-  background: linear-gradient(135deg, var(--color-gray-900), var(--color-gray-600));
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
+  font-size: clamp(2rem, 5vw, 3rem);
+  color: var(--color-gray-900);
+  font-weight: 700;
+  letter-spacing: -0.025em;
 }
 
 h2 {
@@ -158,34 +157,29 @@ button:active {
 
 @media (prefers-color-scheme: dark) {
   :root {
-    --color-gray-50: #111827;
-    --color-gray-100: #1f2937;
-    --color-gray-200: #374151;
-    --color-gray-300: #4b5563;
-    --color-gray-400: #6b7280;
-    --color-gray-500: #9ca3af;
-    --color-gray-600: #d1d5db;
-    --color-gray-700: #e5e7eb;
-    --color-gray-800: #f3f4f6;
-    --color-gray-900: #f9fafb;
+    --color-gray-25: #0d1117;
+    --color-gray-50: #161b22;
+    --color-gray-100: #21262d;
+    --color-gray-200: #30363d;
+    --color-gray-300: #484f58;
+    --color-gray-400: #656d76;
+    --color-gray-500: #8b949e;
+    --color-gray-600: #b1bac4;
+    --color-gray-700: #c9d1d9;
+    --color-gray-800: #f0f6fc;
+    --color-gray-900: #ffffff;
     
-    color: var(--color-gray-800);
-    background-color: var(--color-gray-50);
+    color: var(--color-gray-900);
+    background-color: var(--color-gray-25);
   }
   
   body {
-    background: linear-gradient(135deg, 
-      rgba(99, 102, 241, 0.15) 0%, 
-      rgba(168, 85, 247, 0.1) 50%, 
-      rgba(236, 72, 153, 0.15) 100%);
-    background-attachment: fixed;
+    background: #0d1117;
+    color: var(--color-gray-900);
   }
   
   h1 {
-    background: linear-gradient(135deg, var(--color-gray-900), var(--color-gray-700));
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
+    color: var(--color-gray-900);
   }
 }
 
