@@ -22,7 +22,7 @@ body {
   display: flex;
   min-width: 320px;
   min-height: 100vh;
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  background: #fafbfc;
 }
 
 #root {
@@ -72,5 +72,14 @@ button:focus-visible {
   }
   button {
     background-color: #f9f9f9;
+  }
+  body {
+    background: #fafbfc;
+  }
+}
+
+@media (prefers-color-scheme: dark) {
+  body {
+    background: #0d1117;
   }
 }

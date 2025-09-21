@@ -1,15 +1,20 @@
 .layout {
   min-height: 100vh;
+  display: flex;
+  flex-direction: column;
 }
 
 .layout-header {
-  background: #f8f9fa;
-  padding: 1rem 2rem;
-  border-bottom: 1px solid #e9ecef;
+  background: #ffffff;
+  border-bottom: 1px solid #d0d7de;
+  padding: var(--space-md) var(--space-xl);
   display: flex;
   justify-content: space-between;
   align-items: center;
-  gap: 1rem;
+  gap: var(--space-lg);
+  position: sticky;
+  top: 0;
+  z-index: 50;
 }
 
 .layout-nav {
@@ -19,40 +24,48 @@
 .layout-controls {
   display: flex;
   align-items: center;
-  gap: 1rem;
+  gap: var(--space-lg);
 }
 
 .home-link {
-  color: #007bff;
+  color: #656d76;
   text-decoration: none;
   font-weight: 500;
-  padding: 0.5rem 1rem;
-  border-radius: 6px;
-  transition: all 0.2s ease;
-  border: 2px solid transparent;
+  padding: var(--space-xs) var(--space-sm);
+  border-radius: var(--radius-md);
+  transition: all 0.15s ease;
+  border: 1px solid transparent;
+  background: transparent;
+  display: flex;
+  align-items: center;
+  gap: var(--space-xs);
+  font-size: 0.875rem;
 }
 
 .home-link:hover {
-  background: #e3f2fd;
-  color: #0056b3;
+  background: #f6f8fa;
+  color: #24292f;
 }
 
 .home-link:focus {
   outline: none;
-  border-color: #007bff;
-  box-shadow: 0 0 0 2px rgba(0, 123, 255, 0.25);
+  border-color: var(--color-primary);
+  box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.12);
 }
 
 .layout-content {
   flex: 1;
+  display: flex;
+  flex-direction: column;
 }
 
 /* Responsive design */
 @media (max-width: 768px) {
   .layout-header {
+    padding: var(--space-md) var(--space-lg);
     flex-direction: column;
     align-items: stretch;
-    gap: 0.5rem;
+    gap: var(--space-md);
   }
   
   .layout-nav {
@@ -61,28 +74,27 @@
   
   .layout-controls {
     order: 1;
-    justify-content: flex-end;
+    justify-content: center;
+  }
+  
+  .home-link {
+    justify-content: center;
   }
 }
 
 /* Dark mode support */
 @media (prefers-color-scheme: dark) {
   .layout-header {
-    background: #2a2a2a;
-    border-bottom-color: #444;
+    background: #0d1117;
+    border-bottom-color: #21262d;
   }
   
   .home-link {
-    color: #66b3ff;
+    color: #8b949e;
   }
   
   .home-link:hover {
-    background: rgba(102, 179, 255, 0.1);
-    color: #80c7ff;
-  }
-  
-  .home-link:focus {
-    border-color: #66b3ff;
-    box-shadow: 0 0 0 2px rgba(102, 179, 255, 0.25);
+    background: #21262d;
+    color: #f0f6fc;
   }
 }
