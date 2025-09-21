@@ -3,7 +3,7 @@
 import fs from 'node:fs';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
-import { BedrockTranslationService } from './bedrock-ai-service.js';
+import { OllamaTranslationService } from './ollama-ai-service.js';
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
@@ -11,15 +11,6 @@ const projectRoot = path.resolve(__dirname, '..');
 const localesDir = path.join(projectRoot, 'src', 'locales');
 const englishLocalePath = path.join(localesDir, 'en.json');
 
-/**
- * AI-powered validation of translations
- * @param {Object} englishObj - English translations object
- * @param {Object} translatedObj - Translated object to validate
- * @param {string} targetLanguage - Target language code
- * @param {BedrockTranslationService} aiService - AI service instance
- * @param {string} keyPrefix - Current key path for context
- * @returns {Object} Validation results
- */
 async function validateTranslations(englishObj, translatedObj, targetLanguage, aiService, keyPrefix = '') {
   const results = {
     totalValidated: 0,
@@ -146,31 +137,28 @@ async function validateLanguageWithAI(languageCode = null) {
     }
 
     console.log('🤖 Starting AI-powered translation validation...');
-    console.log('🔧 Initializing AWS Bedrock with Claude 4 Sonnet...');
+    console.log('🔧 Initializing Ollama with gemma3:4b...');
     
-    const aiService = new BedrockTranslationService();
+    const aiService = new OllamaTranslationService();
     
-    // Check AWS credentials
-    console.log('🔍 Checking AWS credentials...');
-    const hasCredentials = await aiService.checkCredentials();
+    // Check Ollama connection and models
+    console.log('🔍 Checking Ollama connection and models...');
+    const hasConnection = await aiService.checkConnection();
     
-    if (!hasCredentials) {
-      console.error('❌ AWS credentials not found or invalid.');
+    if (!hasConnection) {
+      console.error('❌ Ollama not accessible or required models not found.');
       console.log('');
-      console.log('Please configure your AWS credentials using one of these methods:');
-      console.log('1. Environment variables:');
-      console.log('   export AWS_ACCESS_KEY_ID=your_access_key');
-      console.log('   export AWS_SECRET_ACCESS_KEY=your_secret_key');
-      console.log('   export AWS_REGION=us-east-1');
+      console.log('Please ensure:');
+      console.log('1. Ollama is running: ollama serve');
+      console.log('2. Required models are available:');
+      console.log('   ollama pull gpt-oss:20b    # Translation model');
+      console.log('   ollama pull gemma3:4b      # Validation model');
       console.log('');
-      console.log('2. AWS credentials file (~/.aws/credentials)');
-      console.log('3. IAM roles (if running on AWS)');
-      console.log('');
-      console.log('Required permissions: bedrock:InvokeModel');
+      console.log('Or set OLLAMA_HOST environment variable if running remotely');
       process.exit(1);
     }
     
-    console.log('✅ AWS credentials verified');
+    console.log('✅ Ollama connection verified');
     console.log('🚀 Starting validation process...');
     console.log('');
 
