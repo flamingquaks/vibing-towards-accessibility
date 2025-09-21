@@ -31,8 +31,8 @@ describe('RainbowGenerator', () => {
   it('displays initial state correctly', () => {
     render(<RainbowGenerator />);
     
-    expect(screen.getByText('0')).toBeInTheDocument(); // Rainbow count
-    expect(screen.getByText('Manual mode')).toBeInTheDocument();
+    expect(screen.getByText('Rainbows active: 0')).toBeInTheDocument(); // Rainbow count
+    expect(screen.getByText('Status: Manual mode')).toBeInTheDocument();
     expect(screen.getByText('Click here or use the buttons above to create bouncing rainbows!')).toBeInTheDocument();
   });
 
@@ -43,7 +43,7 @@ describe('RainbowGenerator', () => {
     const addButton = screen.getByRole('button', { name: 'Add Rainbow' });
     await user.click(addButton);
     
-    expect(screen.getByText('1')).toBeInTheDocument(); // Updated count
+    expect(screen.getByText('Rainbows active: 1')).toBeInTheDocument(); // Updated count
     
     // The empty state message should be gone
     expect(screen.queryByText('Click here or use the buttons above to create bouncing rainbows!')).not.toBeInTheDocument();
@@ -56,13 +56,13 @@ describe('RainbowGenerator', () => {
     const addButton = screen.getByRole('button', { name: 'Add Rainbow' });
     
     await user.click(addButton);
-    expect(screen.getByText('1')).toBeInTheDocument();
+    expect(screen.getByText('Rainbows active: 1')).toBeInTheDocument();
     
     await user.click(addButton);
-    expect(screen.getByText('2')).toBeInTheDocument();
+    expect(screen.getByText('Rainbows active: 2')).toBeInTheDocument();
     
     await user.click(addButton);
-    expect(screen.getByText('3')).toBeInTheDocument();
+    expect(screen.getByText('Rainbows active: 3')).toBeInTheDocument();
   });
 
   it('clears all rainbows when Clear All button is clicked', async () => {
@@ -73,13 +73,13 @@ describe('RainbowGenerator', () => {
     const addButton = screen.getByRole('button', { name: 'Add Rainbow' });
     await user.click(addButton);
     await user.click(addButton);
-    expect(screen.getByText('2')).toBeInTheDocument();
+    expect(screen.getByText('Rainbows active: 2')).toBeInTheDocument();
     
     // Clear all
     const clearButton = screen.getByRole('button', { name: 'Clear All' });
     await user.click(clearButton);
     
-    expect(screen.getByText('0')).toBeInTheDocument();
+    expect(screen.getByText('Rainbows active: 0')).toBeInTheDocument();
     expect(screen.getByText('Click here or use the buttons above to create bouncing rainbows!')).toBeInTheDocument();
   });
 
@@ -91,13 +91,13 @@ describe('RainbowGenerator', () => {
     
     // Start auto-generation
     await user.click(autoButton);
-    expect(screen.getByText('Auto-generating')).toBeInTheDocument();
-    expect(screen.getByRole('button', { name: 'Stop generating rainbows' })).toBeInTheDocument();
+    expect(screen.getByText('Status: Auto-generating')).toBeInTheDocument();
+    expect(screen.getByRole('button', { name: 'Stop Auto' })).toBeInTheDocument();
     
     // Stop auto-generation
-    const stopButton = screen.getByRole('button', { name: 'Stop generating rainbows' });
+    const stopButton = screen.getByRole('button', { name: 'Stop Auto' });
     await user.click(stopButton);
-    expect(screen.getByText('Manual mode')).toBeInTheDocument();
+    expect(screen.getByText('Status: Manual mode')).toBeInTheDocument();
     expect(screen.getByRole('button', { name: 'Start Auto' })).toBeInTheDocument();
   });
 
@@ -108,7 +108,7 @@ describe('RainbowGenerator', () => {
     const playground = screen.getByRole('application', { name: 'Rainbow playground - click to add rainbows' });
     await user.click(playground);
     
-    expect(screen.getByText('1')).toBeInTheDocument();
+    expect(screen.getByText('Rainbows active: 1')).toBeInTheDocument();
   });
 
   it('supports keyboard interaction on playground', async () => {
@@ -120,11 +120,11 @@ describe('RainbowGenerator', () => {
     // Focus and press Enter
     playground.focus();
     await user.keyboard('{Enter}');
-    expect(screen.getByText('1')).toBeInTheDocument();
+    expect(screen.getByText('Rainbows active: 1')).toBeInTheDocument();
     
     // Press Space
     await user.keyboard(' ');
-    expect(screen.getByText('2')).toBeInTheDocument();
+    expect(screen.getByText('Rainbows active: 2')).toBeInTheDocument();
   });
 
   it('has proper accessibility attributes', () => {
@@ -148,6 +148,6 @@ describe('RainbowGenerator', () => {
   it('displays instruction text correctly', () => {
     render(<RainbowGenerator />);
     
-    expect(screen.getByText('Click anywhere in the area below to create a rainbow, or use the buttons above!')).toBeInTheDocument();
+    expect(screen.getByText('Click anywhere on the canvas or use the buttons above to create colorful bouncing rainbows!')).toBeInTheDocument();
   });
 });
