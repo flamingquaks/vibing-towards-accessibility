@@ -41,6 +41,15 @@
   color: var(--text-color, #333);
 }
 
+/* RTL Support */
+[dir="rtl"] .language-switcher {
+  direction: rtl;
+}
+
+[dir="rtl"] .language-select {
+  text-align: right;
+}
+
 /* Dark mode support */
 @media (prefers-color-scheme: dark) {
   .language-label {

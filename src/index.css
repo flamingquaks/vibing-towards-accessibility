@@ -60,6 +60,20 @@
   -moz-osx-font-smoothing: grayscale;
 }
 
+/* RTL Language Support */
+[dir="rtl"] {
+  font-family: "Segoe UI", "Tahoma", "Arial", sans-serif;
+}
+
+/* Arabic/Hebrew specific font improvements */
+[dir="rtl"][lang="ar"], 
+[dir="rtl"][lang="he"], 
+[dir="rtl"][lang="fa"], 
+[dir="rtl"][lang="ur"] {
+  font-family: "Segoe UI", "Tahoma", "Noto Sans Arabic", "Arial Unicode MS", sans-serif;
+  line-height: 1.6;
+}
+
 * {
   box-sizing: border-box;
   margin: 0;
@@ -103,6 +117,17 @@ h1, h2, h3, h4, h5, h6 {
   line-height: 1.25;
   letter-spacing: -0.025em;
   margin: 0;
+}
+
+/* RTL Typography adjustments */
+[dir="rtl"] h1, 
+[dir="rtl"] h2, 
+[dir="rtl"] h3, 
+[dir="rtl"] h4, 
+[dir="rtl"] h5, 
+[dir="rtl"] h6 {
+  letter-spacing: 0;
+  line-height: 1.4;
 }
 
 h1 {

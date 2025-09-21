@@ -18,7 +18,7 @@ export default function Layout({ children }: LayoutProps) {
         {!isHome && (
           <nav className="layout-nav">
             <Link to="/" className="home-link" aria-label={t('layout.backToHome')}>
-              ← {t('layout.home')}
+              {t('layout.home')}
             </Link>
           </nav>
         )}

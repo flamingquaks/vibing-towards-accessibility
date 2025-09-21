@@ -59,6 +59,32 @@
   flex-direction: column;
 }
 
+/* RTL Support */
+[dir="rtl"] .layout-header {
+  direction: rtl;
+}
+
+[dir="rtl"] .home-link {
+  direction: rtl;
+}
+
+/* Arrow direction adjustment for RTL */
+[dir="rtl"] .home-link::before {
+  content: "→";
+  margin-inline-end: var(--space-xs);
+}
+
+[dir="ltr"] .home-link::before {
+  content: "←";
+  margin-inline-end: var(--space-xs);
+}
+
+/* Hide the text arrow since we're using CSS */
+[dir="rtl"] .home-link,
+[dir="ltr"] .home-link {
+  position: relative;
+}
+
 /* Responsive design */
 @media (max-width: 768px) {
   .layout-header {
