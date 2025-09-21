@@ -16,7 +16,10 @@
     "test:e2e:ui": "playwright test --ui",
     "i18n:onboard": "node scripts/i18n-onboard-language.js",
     "i18n:update": "node scripts/i18n-update-languages.js",
-    "i18n:list": "node scripts/i18n-list-languages.js"
+    "i18n:list": "node scripts/i18n-list-languages.js",
+    "i18n:ai-onboard": "node scripts/i18n-ai-onboard.js",
+    "i18n:ai-translate": "node scripts/i18n-ai-translate.js",
+    "i18n:ai-validate": "node scripts/i18n-ai-validate.js"
   },
   "dependencies": {
     "@types/react-router-dom": "^5.3.3",
@@ -27,6 +30,7 @@
     "react-router-dom": "^7.9.1"
   },
   "devDependencies": {
+    "@aws-sdk/client-bedrock-runtime": "^3.893.0",
     "@eslint/js": "^9.35.0",
     "@playwright/test": "^1.55.0",
     "@testing-library/jest-dom": "^6.8.0",

@@ -57,9 +57,14 @@ function listLanguages() {
     }
 
     console.log('📝 Commands:');
-    console.log('  npm run i18n:onboard <code>  - Create new language');
-    console.log('  npm run i18n:update [code]   - Update existing language(s)');
-    console.log('  npm run i18n:list           - Show this list');
+    console.log('  npm run i18n:onboard <code>     - Create new language with placeholders');
+    console.log('  npm run i18n:update [code]      - Update existing language(s) with missing keys');
+    console.log('  npm run i18n:list              - Show this list');
+    console.log('');
+    console.log('🤖 AI-Powered Commands:');
+    console.log('  npm run i18n:ai-onboard <code>  - Create new language with AI translations');
+    console.log('  npm run i18n:ai-translate [code] - Translate placeholders using AI');
+    console.log('  npm run i18n:ai-validate [code]  - Validate translations using AI');
 
   } catch (error) {
     console.error('Error listing languages:', error.message);
