@@ -1,0 +1,199 @@
+{
+  "homepage": {
+    "title": "Suite de Aplicaciones Accesibles",
+    "subtitle": "Una colección de aplicaciones accesibles y divertidas",
+    "apps": {
+      "documentation": {
+        "title": "Documentación",
+        "description": "Guía completa de características de accesibilidad y uso"
+      },
+      "calculator": {
+        "title": "Calculadora",
+        "description": "Una calculadora con pantalla estilo cinta de cotizaciones"
+      },
+      "rainbows": {
+        "title": "Generador de Arcoíris",
+        "description": "Crea arcoíris saltarines en la página"
+      },
+      "solitaire": {
+        "title": "**solitario**",
+        "description": "Juego clásico de cartas de Solitaire"
+      },
+      "arcade": {
+        "title": "Juego de Arcade",
+        "description": "Juego arcade sencillo"
+      }
+    },
+    "openApp": "Abrir {{title}}: {{description}}"
+  },
+  "layout": {
+    "backToHome": "Volver a la página de inicio",
+    "home": "Inicio"
+  },
+  "languageSwitcher": {
+    "selectLanguage": "Idioma"
+  },
+  "calculator": {
+    "title": "Calculadora",
+    "display": "Pantalla",
+    "calculationTape": "Cinta de cálculo",
+    "noHistory": "Aún no hay cálculos",
+    "buttons": {
+      "clear": "Borrar todo",
+      "clearEntry": "Borrar entrada",
+      "clearText": "AC",
+      "clearEntryText": "CE",
+      "divide": "Dividir",
+      "multiply": "Multiplicar",
+      "subtract": "Restar",
+      "add": "Sumar",
+      "equals": "Igual",
+      "decimal": "Punto decimal",
+      "number": "Número {{number}}"
+    }
+  },
+  "rainbowGenerator": {
+    "title": "Generador de Arcoíris",
+    "addRainbow": "Añadir Arcoíris",
+    "startAuto": "Iniciar automático",
+    "stopAuto": "Detener automático",
+    "clearRainbows": "Borrar todo",
+    "instructions": "¡Haz clic en cualquier parte del lienzo o usa los botones de arriba para crear arcoíris coloridos y rebotantes!",
+    "rainbowPlayground": "Parque de arcoíris - haz clic para añadir arcoíris",
+    "emptyState": "¡Haz clic aquí o usa los botones de arriba para crear arcoíris saltarines!",
+    "rainbowsActive": "Arcoíris activos: {{count}}",
+    "status": "Estado: {{status}}",
+    "autoGenerating": "Generando automáticamente",
+    "manualMode": "Modo manual"
+  },
+  "solitaire": {
+    "title": "Solitario",
+    "moves": "Movimientos: {{count}}",
+    "newGame": "Nuevo juego",
+    "winMessage": "🎉 ¡Felicidades! Ganaste en {{moves}} movimientos! 🎉",
+    "stockPile": "Pila de reserva - haz clic para robar cartas",
+    "wastePile": "Pila de descarte",
+    "foundation": "Fundación {{suit}}",
+    "tableau": "Pila del tableau {{index}}",
+    "cardLabel": "{{rank}} de {{suit}}"
+  },
+  "arcadeGame": {
+    "title": "🐍 Juego de la serpiente",
+    "score": "Puntuación:",
+    "highScore": "Puntuación máxima:",
+    "length": "Longitud:",
+    "gameBoard": "Tablero del juego Snake",
+    "startGame": "▶️ Iniciar juego",
+    "playAgain": "🔄 Jugar de nuevo",
+    "pause": "⏸️ Pausa",
+    "reset": "🔄 Reiniciar",
+    "moveUp": "Mover arriba",
+    "moveLeft": "Mover a la izquierda",
+    "moveDown": "Mover abajo",
+    "moveRight": "Mover a la derecha",
+    "howToPlay": "Cómo jugar:",
+    "instructions": {
+      "movement": "Usa las teclas de flecha o WASD para moverte.",
+      "eat": "Come la comida roja para crecer y ganar puntos",
+      "avoid": "No golpees las paredes ni a ti mismo",
+      "pause": "Presiona Espacio para pausar/iniciar",
+      "speed": "¡El juego acelera a medida que obtienes más puntos!"
+    },
+    "gameOver": {
+      "title": "¡Fin del juego!",
+      "finalScore": "Puntuación final: {{score}}",
+      "snakeLength": "Longitud de la serpiente: {{length}}",
+      "newHighScore": "🎉 ¡Nuevo récord! 🎉",
+      "playAgain": "Jugar de nuevo"
+    }
+  },
+  "documentation": {
+    "title": "Documentación de Accesibilidad",
+    "subtitle": "Guía completa de las funciones de accesibilidad en nuestra suite de aplicaciones",
+    "getStarted": {
+      "title": "Primeros pasos",
+      "text": "¡Bienvenido a nuestra colección de aplicaciones accesibles! Cada aplicación de este conjunto ha sido cuidadosamente diseñada pensando en la accesibilidad, garantizando que todos puedan disfrutar e interactuar con el contenido sin importar sus habilidades o las tecnologías de asistencia que utilicen.",
+      "navigation": "🧭 Navegación",
+      "use": {
+        "keyboard": "Usuarios de teclado: Tabula a través de los elementos interactivos, usa Enter/Space para activar",
+        "screenReader": "Usuarios de lectores de pantalla: Cada aplicación ofrece actualizaciones en vivo y etiquetado claro.",
+        "mobile": "Usuarios móviles: Todas las apps son amigables al tacto y responsivas"
+      },
+      "backToHome": "← Volver a App Suite"
+    },
+    "calculator": {
+      "title": "🧮 Calculadora",
+      "description": "Una calculadora totalmente accesible con retroalimentación visual y auditiva. Cuenta con un historial estilo cinta de noticias que registra tus cálculos.",
+      "keyFeatures": "Características clave:",
+      "features": {
+        "basicOps": "Operaciones aritméticas básicas (+, -, ×, ÷)",
+        "history": "Historial de cálculos con pantalla de cinta de ticker",
+        "keyboard": "Soporte completo de teclado para todas las operaciones",
+        "clear": "Funciones de Borrar y Borrar Entrada"
+      },
+      "accessibility": "Destacados de accesibilidad:",
+      "accessibilityFeatures": {
+        "keyboard": "Soporte de teclado: Navegación completa con teclado",
+        "visual": "Retroalimentación visual: Indicadores de enfoque claros y estados de los botones"
+      },
+      "tryApp": "🧮 Prueba la Calculadora"
+    },
+    "rainbowGenerator": {
+      "title": "🌈 Generador de Arcoíris",
+      "description": "Una experiencia visual interactiva que crea animaciones de arcoíris saltarinas. Esta aplicación muestra gráficos interactivos accesibles y controles de animación.",
+      "keyFeatures": "Características clave:",
+      "features": {
+        "click": "Haz clic o toca para crear arcoíris rebotantes",
+        "auto": "Modo de auto‑generación para la creación continua de arcoíris",
+        "physics": "Animación basada en física con colisión de límites",
+        "counter": "Contador de arcoíris en tiempo real"
+      },
+      "accessibility": "Destacados de accesibilidad:",
+      "accessibilityFeatures": {
+        "keyboard": "Acceso con teclado: las teclas Espacio/Enter crean arcoíris",
+        "controls": "Controles alternativos: Botones para usuarios que no pueden usar el ratón",
+        "status": "Actualizaciones de estado: Conteo en vivo de arcoíris activos",
+        "motion": "Control de Movimiento: Controles claros de inicio/parada para la auto‑generación"
+      },
+      "tryApp": "🌈 Prueba el Generador de Arcoíris"
+    },
+    "solitaire": {
+      "title": "🃏 Solitaire",
+      "description": "Una implementación clásica de Klondike con soporte completo de accesibilidad. Este complejo juego de cartas demuestra alternativas accesibles de arrastrar y soltar y la gestión del estado del juego.",
+      "keyFeatures": "Características clave:",
+      "features": {
+        "klondike": "Reglas clásicas de Klondike Solitaire",
+        "click": "Movimiento de cartas basado en clic (sin necesidad de arrastrar)",
+        "auto": "Autocompletar cuando sea posible",
+        "undo": "Contador de movimientos y estadísticas del juego"
+      },
+      "accessibility": "Destacados de accesibilidad:",
+      "accessibilityFeatures": {
+        "click": "Navegación por clic: No se requiere arrastrar y soltar",
+        "clear": "Retroalimentación visual clara: cartas seleccionadas y movimientos válidos resaltados",
+        "state": "Anuncios del estado del juego: confirmaciones de movimiento y estado del juego",
+        "keyboard": "Soporte de teclado: Juego completo jugable solo con teclado"
+      },
+      "tryApp": "🃏 Prueba Solitaire"
+    },
+    "arcade": {
+      "title": "🕹️ Juego de Arcade",
+      "description": "Una implementación clásica del juego Snake con características de accesibilidad completas. Demuestra cómo los juegos de ritmo rápido pueden ser accesibles.",
+      "keyFeatures": "Características clave:",
+      "features": {
+        "snake": "Jugabilidad clásica de Snake",
+        "keyboard": "Controles de teclado y botones",
+        "score": "Seguimiento de puntuaciones y mejores puntuaciones",
+        "pause": "Funcionalidad de pausa/reanudación"
+      },
+      "accessibility": "Aspectos destacados de accesibilidad:",
+      "accessibilityFeatures": {
+        "keyboard": "Controles de teclado: flechas y WASD para moverse",
+        "buttons": "Controles de botón: Botones direccionales en pantalla",
+        "status": "Actualizaciones de estado: Anuncios de puntuación y estado del juego",
+        "pause": "Control de pausa: Barra espaciadora para pausar/reanudar"
+      },
+      "tryApp": "🕹️ Prueba el juego arcade"
+    }
+  }
+}

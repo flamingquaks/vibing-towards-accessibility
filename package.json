@@ -13,7 +13,13 @@
     "test:ui": "vitest --ui",
     "test:run": "vitest run",
     "test:e2e": "playwright test",
-    "test:e2e:ui": "playwright test --ui"
+    "test:e2e:ui": "playwright test --ui",
+    "i18n:onboard": "node scripts/i18n-onboard-language.js",
+    "i18n:update": "node scripts/i18n-update-languages.js",
+    "i18n:list": "node scripts/i18n-list-languages.js",
+    "i18n:ai-onboard": "node scripts/i18n-ai-onboard.js",
+    "i18n:ai-translate": "node scripts/i18n-ai-translate.js",
+    "i18n:ai-validate": "node scripts/i18n-ai-validate.js"
   },
   "dependencies": {
     "@types/react-router-dom": "^5.3.3",
@@ -24,6 +30,7 @@
     "react-router-dom": "^7.9.1"
   },
   "devDependencies": {
+    "@aws-sdk/client-bedrock-runtime": "^3.893.0",
     "@eslint/js": "^9.35.0",
     "@playwright/test": "^1.55.0",
     "@testing-library/jest-dom": "^6.8.0",
@@ -39,6 +46,7 @@
     "eslint-plugin-react-refresh": "^0.4.20",
     "globals": "^16.4.0",
     "jsdom": "^27.0.0",
+    "ollama": "^0.5.18",
     "typescript": "~5.9.2",
     "typescript-eslint": "^8.43.0",
     "vite": "^7.1.6",

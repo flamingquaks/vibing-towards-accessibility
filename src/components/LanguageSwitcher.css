@@ -1,0 +1,78 @@
+.language-switcher {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  min-width: 180px;
+}
+
+.language-label {
+  font-size: 0.9rem;
+  font-weight: 500;
+  color: var(--text-color, #333);
+  white-space: nowrap;
+}
+
+.language-select {
+  padding: 0.4rem 0.6rem;
+  border: 2px solid var(--border-color, #ddd);
+  border-radius: 6px;
+  background: var(--bg-color, white);
+  color: var(--text-color, #333);
+  font-size: 0.9rem;
+  font-family: inherit;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  min-width: 120px;
+}
+
+.language-select:hover {
+  border-color: var(--accent-color, #007acc);
+}
+
+.language-select:focus {
+  outline: none;
+  border-color: var(--accent-color, #007acc);
+  box-shadow: 0 0 0 3px rgba(0, 122, 204, 0.2);
+}
+
+.language-select option {
+  padding: 0.4rem;
+  background: var(--bg-color, white);
+  color: var(--text-color, #333);
+}
+
+/* Dark mode support */
+@media (prefers-color-scheme: dark) {
+  .language-label {
+    color: var(--text-color-dark, #e0e0e0);
+  }
+  
+  .language-select {
+    background: var(--bg-color-dark, #2a2a2a);
+    color: var(--text-color-dark, #e0e0e0);
+    border-color: var(--border-color-dark, #555);
+  }
+  
+  .language-select option {
+    background: var(--bg-color-dark, #2a2a2a);
+    color: var(--text-color-dark, #e0e0e0);
+  }
+}
+
+/* High contrast mode support */
+@media (prefers-contrast: high) {
+  .language-select {
+    border-width: 3px;
+  }
+  
+  .language-select:focus {
+    box-shadow: 0 0 0 4px rgba(0, 122, 204, 0.4);
+  }
+}
+
+/* Reduced motion support */
+@media (prefers-reduced-motion: reduce) {
+  .language-select {
+    transition: none;
+  }
+}

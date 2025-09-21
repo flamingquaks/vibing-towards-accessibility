@@ -2,10 +2,24 @@
   min-height: 100vh;
 }
 
-.layout-nav {
+.layout-header {
   background: #f8f9fa;
   padding: 1rem 2rem;
   border-bottom: 1px solid #e9ecef;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1rem;
+}
+
+.layout-nav {
+  flex: 1;
+}
+
+.layout-controls {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
 }
 
 .home-link {
@@ -31,4 +45,44 @@
 
 .layout-content {
   flex: 1;
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+  .layout-header {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 0.5rem;
+  }
+  
+  .layout-nav {
+    order: 2;
+  }
+  
+  .layout-controls {
+    order: 1;
+    justify-content: flex-end;
+  }
+}
+
+/* Dark mode support */
+@media (prefers-color-scheme: dark) {
+  .layout-header {
+    background: #2a2a2a;
+    border-bottom-color: #444;
+  }
+  
+  .home-link {
+    color: #66b3ff;
+  }
+  
+  .home-link:hover {
+    background: rgba(102, 179, 255, 0.1);
+    color: #80c7ff;
+  }
+  
+  .home-link:focus {
+    border-color: #66b3ff;
+    box-shadow: 0 0 0 2px rgba(102, 179, 255, 0.25);
+  }
 }

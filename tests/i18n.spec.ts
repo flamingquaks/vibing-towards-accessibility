@@ -35,6 +35,7 @@ const SKIPPED_JSX_ATTRIBUTES = new Set([
   'disabled',
   'autoComplete',
   'placeholderKey',
+  'htmlFor',
   'aria-hidden',
   'aria-live',
   'aria-atomic',
