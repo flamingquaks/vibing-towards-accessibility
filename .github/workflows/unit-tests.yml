@@ -30,6 +30,11 @@ jobs:
     - name: Run linter
       run: npm run lint
 
+    - name: Run semgrep WCAG compliance check
+      run: |
+        python3 -m pip install semgrep
+        npm run wcag
+
     - name: Run unit tests
       run: npm run test:run
 
