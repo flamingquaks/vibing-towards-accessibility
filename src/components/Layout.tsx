@@ -1,5 +1,6 @@
 import { Link, useLocation } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
+import LanguageSwitcher from './LanguageSwitcher';
 import './Layout.css';
 
 interface LayoutProps {
@@ -13,13 +14,18 @@ export default function Layout({ children }: LayoutProps) {
 
   return (
     <div className="layout">
-      {!isHome && (
-        <nav className="layout-nav">
-          <Link to="/" className="home-link" aria-label={t('layout.backToHome')}>
-            ← {t('layout.home')}
-          </Link>
-        </nav>
-      )}
+      <div className="layout-header">
+        {!isHome && (
+          <nav className="layout-nav">
+            <Link to="/" className="home-link" aria-label={t('layout.backToHome')}>
+              ← {t('layout.home')}
+            </Link>
+          </nav>
+        )}
+        <div className="layout-controls">
+          <LanguageSwitcher />
+        </div>
+      </div>
       <main className="layout-content">
         {children}
       </main>

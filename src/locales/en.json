@@ -30,6 +30,9 @@
     "backToHome": "Return to home page",
     "home": "Home"
   },
+  "languageSwitcher": {
+    "selectLanguage": "Language"
+  },
   "calculator": {
     "title": "Calculator",
     "display": "Display",

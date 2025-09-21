@@ -30,6 +30,9 @@
     "backToHome": "Volver a la página de inicio",
     "home": "Inicio"
   },
+  "languageSwitcher": {
+    "selectLanguage": "Idioma"
+  },
   "calculator": {
     "title": "Calculadora",
     "display": "Pantalla",
