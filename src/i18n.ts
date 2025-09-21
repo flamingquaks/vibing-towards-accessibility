@@ -1,6 +1,7 @@
 import i18n from 'i18next';
 import { initReactI18next } from 'react-i18next';
 import en from './locales/en.json';
+import es from './locales/es.json'; // Example for Spanish, if available
 
 i18n
   .use(initReactI18next)
@@ -8,9 +9,10 @@ i18n
     resources: {
       en: {
         translation: en
+      },
+      es: {
+        translation: es
       }
-      // Additional languages can be added here manually as they become available
-      // Example: es: { translation: es }
     },
     lng: 'en', // default language
     fallbackLng: 'en',
