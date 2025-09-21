@@ -1,0 +1,124 @@
+rules:
+  # WCAG 2.1 AA Compliance Rules for React/TypeScript
+
+  # 1. Images must have alt text (WCAG 1.1.1)
+  - id: wcag-img-alt-text
+    pattern: <img $...PROPS />
+    pattern-not:
+      - pattern: <img $...PROPS alt="$ALT" />
+      - pattern: <img $...PROPS alt={$ALT} />
+    message: "Images must have alt text for accessibility (WCAG 1.1.1)"
+    languages: [typescript, javascript]
+    severity: ERROR
+    metadata:
+      wcag-guideline: "1.1.1"
+      category: accessibility
+
+  # 2. ARIA attributes must not be empty (WCAG 4.1.2)
+  - id: wcag-aria-empty
+    pattern-either:
+      - pattern: aria-label=""
+      - pattern: aria-labelledby=""
+      - pattern: aria-describedby=""
+    message: "ARIA attributes should not be empty (WCAG 4.1.2)"
+    languages: [typescript, javascript]
+    severity: ERROR
+    metadata:
+      wcag-guideline: "4.1.2"
+      category: accessibility
+
+  # 3. Links should have meaningful text (WCAG 2.4.4)
+  - id: wcag-link-text
+    pattern-either:
+      - pattern: <a $...PROPS>click here</a>
+      - pattern: <a $...PROPS>read more</a>
+      - pattern: <a $...PROPS>here</a>
+      - pattern: <a $...PROPS>link</a>
+      - pattern: <Link $...PROPS>click here</Link>
+      - pattern: <Link $...PROPS>read more</Link>
+      - pattern: <Link $...PROPS>here</Link>
+      - pattern: <Link $...PROPS>link</Link>
+    message: "Links should have meaningful text that describes their purpose (WCAG 2.4.4)"
+    languages: [typescript, javascript]
+    severity: WARNING
+    metadata:
+      wcag-guideline: "2.4.4"
+      category: accessibility
+
+  # 4. Avoid positive tab index (WCAG 2.4.3)
+  - id: wcag-tabindex-positive
+    pattern-regex: "tabIndex=\\{[1-9]\\d*\\}"
+    message: "Avoid positive tabIndex values as they can break natural tab order (WCAG 2.4.3)"
+    languages: [typescript, javascript]
+    severity: WARNING
+    metadata:
+      wcag-guideline: "2.4.3"
+      category: accessibility
+
+  # 5. Buttons should have accessible content
+  - id: wcag-empty-button
+    pattern: <button $...PROPS></button>
+    message: "Buttons must have accessible text or aria-label (WCAG 4.1.2)"
+    languages: [typescript, javascript]
+    severity: ERROR
+    metadata:
+      wcag-guideline: "4.1.2"
+      category: accessibility
+
+  # 6. Form inputs should have labels
+  - id: wcag-input-no-label
+    pattern: <input $...PROPS />
+    pattern-not-regex: 'aria-label|aria-labelledby|type="hidden"|type="submit"|type="button"'
+    message: "Form inputs should have accessible labels (WCAG 1.3.1, 3.3.2)"
+    languages: [typescript, javascript]
+    severity: WARNING
+    metadata:
+      wcag-guideline: "1.3.1, 3.3.2"
+      category: accessibility
+
+  # 7. Auto-playing media warning
+  - id: wcag-autoplay
+    pattern-either:
+      - pattern: autoPlay={true}
+      - pattern: autoplay={true}
+      - pattern: autoplay="true"
+    message: "Auto-playing media can be disorienting - provide user controls (WCAG 1.4.2)"
+    languages: [typescript, javascript]
+    severity: WARNING
+    metadata:
+      wcag-guideline: "1.4.2"
+      category: accessibility
+
+  # 8. Semantic HTML recommendation
+  - id: wcag-div-button-role
+    pattern-regex: '<div\\s+[^>]*role="button"'
+    message: "Consider using semantic <button> element instead of div with button role (WCAG 1.3.1)"
+    languages: [typescript, javascript]
+    severity: INFO
+    metadata:
+      wcag-guideline: "1.3.1"
+      category: accessibility
+
+  # 9. Check for heading hierarchy
+  - id: wcag-heading-skip
+    pattern-regex: "<h[4-6]\\b"
+    message: "Consider using semantic heading hierarchy (h1->h2->h3) for better accessibility (WCAG 1.3.1)"
+    languages: [typescript, javascript, html]
+    severity: INFO
+    metadata:
+      wcag-guideline: "1.3.1"
+      category: accessibility
+
+  # 10. Color contrast considerations
+  - id: wcag-light-colors
+    pattern-either:
+      - pattern: color="white"
+      - pattern: color="yellow"
+      - pattern: backgroundColor="white"
+      - pattern: backgroundColor="yellow"
+    message: "Light colors may not provide sufficient contrast - verify WCAG AA compliance (WCAG 1.4.3)"
+    languages: [typescript, javascript]
+    severity: INFO
+    metadata:
+      wcag-guideline: "1.4.3"
+      category: accessibility

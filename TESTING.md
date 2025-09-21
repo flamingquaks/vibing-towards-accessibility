@@ -28,16 +28,20 @@ npm run test
 npm run test:ui
 ```
 
-### E2E Tests
+### 🧪 Accessibility Testing Commands
+
 ```bash
-# Install Playwright browsers (first time only)
-npx playwright install
+# Run WCAG compliance checks (critical issues only)
+npm run wcag
 
-# Run E2E tests
+# Run full semgrep accessibility linting  
+npm run lint:semgrep
+
+# Run all linting (ESLint + semgrep)
+npm run lint:all
+
+# Run E2E accessibility tests
 npm run test:e2e
-
-# Run E2E tests with UI
-npm run test:e2e:ui
 ```
 
 ## Test Coverage
@@ -136,6 +140,8 @@ The test suite includes comprehensive accessibility validation:
 - **Keyboard Navigation**: Validates tab order and keyboard interactions
 - **Semantic Structure**: Checks heading hierarchy and landmark usage
 - **Screen Reader Support**: Verifies content is accessible to assistive technologies
+- **WCAG 2.1 AA Compliance**: Automated static analysis with semgrep rules
+- **Real-time Validation**: Continuous accessibility testing in CI/CD pipeline
 
 ## Test Results
 
@@ -176,6 +182,8 @@ The repository includes comprehensive CI/CD workflows:
 
 All pull requests must pass:
 - ✅ ESLint validation (0 errors)
+- ✅ Semgrep WCAG compliance (0 critical issues)
+- ✅ Semgrep accessibility linting
 - ✅ 54 unit tests passing
 - ✅ TypeScript compilation
 - ✅ Production build successful
