@@ -12,6 +12,8 @@ interface Card {
   id: string;
 }
 
+const SUITS: Suit[] = ['♠', '♥', '♦', '♣'];
+
 export default function Solitaire() {
   const { t } = useTranslation();
   const [foundations, setFoundations] = useState<Card[][]>([[], [], [], []]);
@@ -22,14 +24,10 @@ export default function Solitaire() {
   const [moves, setMoves] = useState(0);
   const [gameWon, setGameWon] = useState(false);
 
-  // eslint-disable-next-line react-hooks/exhaustive-deps
-  const suits: Suit[] = ['♠', '♥', '♦', '♣'];
-  
-
   const createDeck = useCallback((): Card[] => {
     const newDeck: Card[] = [];
     const ranks: Rank[] = ['A', '2', '3', '4', '5', '6', '7', '8', '9', '10', 'J', 'Q', 'K'];
-    suits.forEach(suit => {
+    SUITS.forEach(suit => {
       ranks.forEach(rank => {
         newDeck.push({
           suit,
@@ -40,7 +38,7 @@ export default function Solitaire() {
       });
     });
     return shuffleDeck(newDeck);
-  }, [suits]);
+  }, []);
 
   const shuffleDeck = (deck: Card[]): Card[] => {
     const shuffled = [...deck];
@@ -249,7 +247,7 @@ export default function Solitaire() {
                 onClick={() => handleCardClick(`foundation${index}`, foundation.length)}
                 role="button"
                 tabIndex={0}
-                aria-label={t('solitaire.foundation', { suit: suits[index] })}
+                aria-label={t('solitaire.foundation', { suit: SUITS[index] })}
               >
                 {foundation.length > 0 ? (
                   <div className="card">
@@ -259,7 +257,7 @@ export default function Solitaire() {
                   </div>
                 ) : (
                   <div className="empty-foundation">
-                    {suits[index]}
+                    {SUITS[index]}
                   </div>
                 )}
               </div>
