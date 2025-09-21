@@ -82,12 +82,30 @@ jobs:
           comment += '- ✅ Keyboard navigation tested\n';
           comment += '- ✅ Screen reader support verified\n';
           
-          github.rest.issues.createComment({
-            issue_number: context.issue.number,
-            owner: context.repo.owner,
-            repo: context.repo.repo,
-            body: comment
-          });
+          // Create a review comment associated with the current commit
+          // This associates the comment with the specific commit SHA, so when new 
+          // commits are pushed, this comment will be marked as outdated
+          try {
+            await github.rest.pulls.createReview({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              pull_number: context.issue.number,
+              commit_id: context.sha,
+              body: comment,
+              event: 'COMMENT'
+            });
+            console.log(`Quality gate review posted for commit ${context.sha}`);
+          } catch (error) {
+            console.error('Failed to create review comment:', error);
+            // Fallback to regular issue comment if review creation fails
+            await github.rest.issues.createComment({
+              issue_number: context.issue.number,
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              body: comment
+            });
+            console.log('Fallback: Posted as regular issue comment');
+          }
 
     - name: Upload test artifacts
       uses: actions/upload-artifact@v4
