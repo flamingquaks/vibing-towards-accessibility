@@ -13,7 +13,10 @@
     "test:ui": "vitest --ui",
     "test:run": "vitest run",
     "test:e2e": "playwright test",
-    "test:e2e:ui": "playwright test --ui"
+    "test:e2e:ui": "playwright test --ui",
+    "i18n:onboard": "node scripts/i18n-onboard-language.js",
+    "i18n:update": "node scripts/i18n-update-languages.js",
+    "i18n:list": "node scripts/i18n-list-languages.js"
   },
   "dependencies": {
     "@types/react-router-dom": "^5.3.3",

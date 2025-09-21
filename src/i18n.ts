@@ -9,6 +9,8 @@ i18n
       en: {
         translation: en
       }
+      // Additional languages can be added here manually as they become available
+      // Example: es: { translation: es }
     },
     lng: 'en', // default language
     fallbackLng: 'en',
