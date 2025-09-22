@@ -47,7 +47,7 @@ describe('Layout', () => {
     const homeLink = screen.getByRole('link', { name: /Return to home page/i });
     expect(homeLink).toBeInTheDocument();
     expect(homeLink).toHaveAttribute('href', '/');
-    expect(homeLink).toHaveTextContent('← Home');
+    expect(homeLink).toHaveTextContent('Home');
   });
 
   it('has proper semantic structure', () => {
