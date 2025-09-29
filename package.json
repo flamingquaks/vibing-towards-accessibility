@@ -34,7 +34,7 @@
     "react": "^19.1.1",
     "react-dom": "^19.1.1",
     "react-i18next": "^15.7.3",
-    "react-router-dom": "^7.9.1"
+    "react-router-dom": "^7.9.3"
   },
   "devDependencies": {
     "@aws-sdk/client-bedrock-runtime": "^3.893.0",
