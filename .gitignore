@@ -27,3 +27,11 @@ coverage/
 *.njsproj
 *.sln
 *.sw?
+
+
+
+# PrompTrek local variables (user-specific, not committed)
+.claude/   
+.cursor/
+variables.promptrek.yaml
+.venv/

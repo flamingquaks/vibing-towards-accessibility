@@ -1,0 +1,29 @@
+repos:
+- repo: local
+  hooks:
+  - id: promptrek-validate
+    name: Validate PrompTrek files
+    entry: promptrek validate
+    language: system
+    files: \.promptrek\.ya?ml$
+    pass_filenames: true
+    stages:
+    - pre-commit
+  - id: promptrek-prevent-generated
+    name: Prevent committing generated files
+    entry: promptrek check-generated
+    language: system
+    files: (?x)(^\.github/(copilot-instructions\.md|instructions/.*\.instructions\.md|prompts/.*\.prompt\.md)$|^(\.cursorrules|\.cursor/.*|\.cursorignore|\.cursorindexingignore|AGENTS\.md)$|^(config\.yaml|\.continue/.*)$|^(\.claude/.*|CLAUDE\.md)$|^\.clinerules/.*$|^\.windsurf/.*$|^\.kiro/.*$|^\.tabnine_commands$|^\.amazonq/.*$|^\.assistant/.*)
+    stages:
+    - pre-commit
+    always_run: false
+    pass_filenames: true
+  - id: promptrek-check-local-vars
+    name: Prevent committing local variables
+    entry: promptrek check-generated
+    language: system
+    files: variables\.promptrek\.ya?ml$
+    stages:
+    - pre-commit
+    always_run: false
+    pass_filenames: true

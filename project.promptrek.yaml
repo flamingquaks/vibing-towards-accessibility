@@ -1,0 +1,33 @@
+schema_version: 2.1.0
+metadata:
+  title: Vibing Towards Accessibility
+  description: A project to showcase using AI to enhance web accessibility.
+  author: Addie Rudy <developer@flamingquaks.dev>
+  tags:
+  - accessibility
+content: |-
+  # Vibing Towards Accessibility
+
+  A project to showcase using AI to enhance web accessibility.
+
+  ## Project Details
+  **Project Type:** web_application
+  **Technologies:** typescript, javascript, react
+
+  **Description:**
+  A web application focused on improving accessibility using AI.
+
+  ## Development Guidelines
+
+  ### General Principles
+  - Write clean, readable, and maintainable code
+  - Follow existing code patterns and conventions
+  - Add appropriate comments for complex logic
+
+  ## AI Assistant Instructions
+
+  When working on this project:
+  - Follow the established patterns and conventions shown above
+  - Maintain consistency with the existing codebase
+  - Consider the project context and requirements in all suggestions
+  - Prioritize code quality, maintainability, and best practices

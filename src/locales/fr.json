@@ -1,0 +1,202 @@
+{
+  "homepage": {
+    "title": "Suite d'applications accessibles",
+    "subtitle": "Une collection d'applications accessibles et ludiques",
+    "apps": {
+      "documentation": {
+        "title": "Documentation",
+        "description": "Guide complet des fonctionnalités d'accessibilité et de leur utilisation"
+      },
+      "calculator": {
+        "title": "Calculatrice",
+        "description": "Une calculatrice avec affichage de type ticker tape"
+      },
+      "rainbows": {
+        "title": "Générateur d'arc-en-ciel",
+        "description": "Créer des arcs‑en‑ciel rebondissants à travers la page"
+      },
+      "solitaire": {
+        "title": "Solitaire",
+        "description": "Jeu de cartes classique Solitaire"
+      },
+      "arcade": {
+        "title": "Jeu d'arcade",
+        "description": "Jeu d'arcade simple"
+      }
+    },
+    "openApp": "Ouvrir {{title}} : {{description}}"
+  },
+  "layout": {
+    "backToHome": "Retour à la page d'accueil",
+    "home": "Accueil"
+  },
+  "languageSwitcher": {
+    "selectLanguage": "Langue"
+  },
+  "calculator": {
+    "title": "Calculatrice",
+    "display": "Affichage",
+    "calculationTape": "Piste de calcul",
+    "noHistory": "Aucun calcul effectué",
+    "buttons": {
+      "clear": "Effacer tout",
+      "clearEntry": "Effacer la saisie",
+      "clearText": "AC",
+      "clearEntryText": "CE",
+      "divide": "Diviser",
+      "multiply": "Multiplier",
+      "subtract": "Soustraire",
+      "add": "Ajouter",
+      "equals": "Égal",
+      "decimal": "Point décimal",
+      "number": "Nombre {{number}}"
+    }
+  },
+  "rainbowGenerator": {
+    "title": "Générateur d'arc-en-ciel",
+    "addRainbow": "Ajouter un arc-en-ciel",
+    "startAuto": "Démarrer automatiquement",
+    "stopAuto": "Arrêter l'automatique",
+    "clearRainbows": "Tout effacer",
+    "instructions": "Cliquez n’importe où sur le canevas ou utilisez les boutons ci‑dessus pour créer des arcs‑en‑ciel colorés qui rebondissent !",
+    "rainbowPlayground": "Terrain de jeu arc-en-ciel - cliquez pour ajouter des arcs-en-ciel",
+    "emptyState": "Cliquez ici ou utilisez les boutons ci-dessus pour créer des arcs‑en‑ciel qui rebondissent !",
+    "rainbowsActive": "Arcs-en-ciel actifs : {{count}}",
+    "status": "Statut : {{status}}",
+    "autoGenerating": "Génération automatique",
+    "manualMode": "Mode manuel"
+  },
+  "solitaire": {
+    "title": "Solitaire",
+    "moves": "Mouvements: {{count}}",
+    "newGame": "Nouvelle partie",
+    "winMessage": "🎉 Félicitations ! Vous avez gagné en {{moves}} coups ! 🎉",
+    "stockPile": "Pile de réserve - cliquez pour piocher des cartes",
+    "wastePile": "Pile de défausse",
+    "foundation": "Fondation {{suit}}",
+    "tableau": "Pile {{index}} du tableau",
+    "cardLabel": "{{rank}} de {{suit}}",
+    "drawMode": "Dessiner:",
+    "oneCard": "1 carte",
+    "threeCards": "3 cartes"
+  },
+  "arcadeGame": {
+    "title": "🐍 Jeu Snake",
+    "score": "Score:",
+    "highScore": "Meilleur score:",
+    "length": "Durée:",
+    "gameBoard": "Plateau de jeu Snake",
+    "startGame": "▶️ Démarrer la partie",
+    "playAgain": "🔄 Rejouer",
+    "pause": "⏸️ Pause",
+    "reset": "🔄 Réinitialiser",
+    "moveUp": "Monter",
+    "moveLeft": "Déplacer à gauche",
+    "moveDown": "Descendre",
+    "moveRight": "Déplacer à droite",
+    "howToPlay": "Comment jouer :",
+    "instructions": {
+      "movement": "Utilisez les touches fléchées ou WASD pour bouger",
+      "eat": "Mangez la nourriture rouge pour grandir et marquer des points",
+      "avoid": "Ne touche pas aux murs ni à toi-même",
+      "pause": "Appuyez sur Espace pour mettre en pause/démarrer",
+      "speed": "Le jeu s'accélère à mesure que vous marquez plus de points !"
+    },
+    "gameOver": {
+      "title": "Fin du jeu!",
+      "finalScore": "Score final : {{score}}",
+      "snakeLength": "Longueur du serpent : {{length}}",
+      "newHighScore": "🎉 Nouveau meilleur score! 🎉",
+      "playAgain": "Rejouer"
+    }
+  },
+  "documentation": {
+    "title": "Documentation d'accessibilité",
+    "subtitle": "Guide complet des fonctionnalités d'accessibilité dans notre suite d'applications",
+    "getStarted": {
+      "title": "Commencer",
+      "text": "Bienvenue dans notre collection d'applications accessibles ! Chaque application de cette suite a été soigneusement conçue en pensant à l'accessibilité, afin que chacun puisse profiter et interagir avec le contenu, quelles que soient ses capacités ou les technologies d'assistance qu'il utilise.",
+      "navigation": "🧭 Navigation",
+      "use": {
+        "keyboard": "Utilisateurs de clavier : Tab pour parcourir les éléments interactifs, utilisez Entrée/Espace pour activer",
+        "screenReader": "Utilisateurs de lecteurs d'écran : chaque application fournit des mises à jour en temps réel et un libellé clair.",
+        "mobile": "Utilisateurs mobiles : Toutes les applications sont adaptées au tactile et réactives"
+      },
+      "backToHome": "← Retour à la Suite d'applications"
+    },
+    "calculator": {
+      "title": "🧮 Calculatrice",
+      "description": "Un calculateur entièrement accessible avec des retours visuels et auditifs. Il propose un historique en ruban qui conserve le suivi de vos calculs.",
+      "keyFeatures": "Fonctionnalités clés:",
+      "features": {
+        "basicOps": "Opérations arithmétiques de base (+, -, ×, ÷)",
+        "history": "Historique des calculs avec affichage en bande défilante",
+        "keyboard": "Support complet du clavier pour toutes les opérations",
+        "clear": "Fonctions Effacer et Effacer saisie"
+      },
+      "accessibility": "Points forts de l'accessibilité:",
+      "accessibilityFeatures": {
+        "keyboard": "Support clavier : navigation complète au clavier",
+        "visual": "Retour visuel : indicateurs de focus clairs et états des boutons"
+      },
+      "tryApp": "🧮 Essayez le Calculateur"
+    },
+    "rainbowGenerator": {
+      "title": "🌈 Générateur d'arc‑en‑ciel",
+      "description": "Une expérience visuelle interactive qui crée des animations arc‑en‑ciel rebondissantes. Cette application met en avant des graphiques interactifs accessibles et des contrôles d’animation.",
+      "keyFeatures": "Fonctionnalités clés:",
+      "features": {
+        "click": "Cliquez ou touchez pour créer des arcs‑en‑ciel rebondissants",
+        "auto": "Mode d'auto-génération pour la création continue d'arc-en-ciel",
+        "physics": "Animation basée sur la physique avec collision aux limites",
+        "counter": "Compteur d'arc-en-ciel en temps réel"
+      },
+      "accessibility": "Points forts de l'accessibilité:",
+      "accessibilityFeatures": {
+        "keyboard": "Accès clavier : les touches Espace/Entrée créent des arcs‑en‑ciel",
+        "controls": "Contrôles alternatifs : Boutons pour les utilisateurs qui ne peuvent pas utiliser la souris",
+        "status": "Mises à jour de statut : Compteur en temps réel des arcs‑en‑ciel actifs",
+        "motion": "Contrôle de mouvement : Contrôles clairs de démarrage/arrêt pour l'auto-génération"
+      },
+      "tryApp": "🌈 Essayez le Générateur Arc-en-ciel"
+    },
+    "solitaire": {
+      "title": "🃏 Solitaire",
+      "description": "Une implémentation classique de Solitaire Klondike avec un support complet d'accessibilité. Ce jeu de cartes complexe démontre des alternatives accessibles au glisser-déposer et la gestion de l'état du jeu.",
+      "keyFeatures": "Fonctionnalités clés:",
+      "features": {
+        "klondike": "Règles classiques du Solitaire Klondike",
+        "click": "Déplacement de cartes par clic (pas de glisser requis)",
+        "auto": "Auto-complétion lorsque possible",
+        "undo": "Compteur de mouvements et statistiques du jeu"
+      },
+      "accessibility": "Points forts de l'accessibilité:",
+      "accessibilityFeatures": {
+        "click": "Navigation par clic : Pas de glisser-déposer requis",
+        "clear": "Retour visuel clair : cartes sélectionnées et mouvements valides surlignés",
+        "state": "Annonces d'état du jeu : confirmations de mouvements et état du jeu",
+        "keyboard": "Support clavier : Jeu complet jouable uniquement au clavier"
+      },
+      "tryApp": "🃏 Essayez Solitaire"
+    },
+    "arcade": {
+      "title": "🕹️ Jeu d'arcade",
+      "description": "Une implémentation classique du jeu Snake avec des fonctionnalités d'accessibilité complètes. Montre comment les jeux à rythme rapide peuvent être rendus accessibles.",
+      "keyFeatures": "Fonctionnalités clés:",
+      "features": {
+        "snake": "Jeu Snake classique",
+        "keyboard": "Clavier et contrôles de bouton",
+        "score": "Suivi des scores et meilleurs scores",
+        "pause": "Fonctionnalité de pause/reprise"
+      },
+      "accessibility": "Points forts de l'accessibilité:",
+      "accessibilityFeatures": {
+        "keyboard": "Contrôles clavier : touches fléchées et WASD pour le déplacement",
+        "buttons": "Contrôles de bouton : Boutons directionnels à l'écran",
+        "status": "Mises à jour de statut : Annonces de score et d'état du jeu",
+        "pause": "Contrôle de pause : barre d'espace pour mettre en pause/reprendre"
+      },
+      "tryApp": "🕹️ Essayez le jeu d'arcade"
+    }
+  }
+}
