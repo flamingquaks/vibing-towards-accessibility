@@ -4,12 +4,14 @@ import { isRTLLanguage } from './constants';
 import en from './locales/en.json';
 import es from './locales/es.json';
 import ar from './locales/ar.json';
+import fr from './locales/fr.json';
 
 // Available languages
 const resources = {
   en: { translation: en },
   es: { translation: es },
-  ar: { translation: ar }
+  ar: { translation: ar },
+  fr: { translation: fr }
 };
 
 // Get saved language from localStorage or default to English
