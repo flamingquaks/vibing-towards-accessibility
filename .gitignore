@@ -35,3 +35,4 @@ coverage/
 .cursor/
 variables.promptrek.yaml
 .venv/
+.mcp.json

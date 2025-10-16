@@ -3,6 +3,7 @@ metadata:
   title: Vibing Towards Accessibility
   description: A project to showcase using AI to enhance web accessibility.
   author: Addie Rudy <developer@flamingquaks.dev>
+  updated: '2025-10-15T19:53:53.452633'
   tags:
   - accessibility
 content: |-
@@ -31,3 +32,13 @@ content: |-
   - Maintain consistency with the existing codebase
   - Consider the project context and requirements in all suggestions
   - Prioritize code quality, maintainability, and best practices
+
+plugins:
+  mcp_servers:
+    - name: filesystem
+      command: npx
+      args:
+        - "-y"
+        - "@modelcontextprotocol/server-filesystem"
+        - "/path/to/allowed/directory"
+      description: "Filesystem access for the AI"
