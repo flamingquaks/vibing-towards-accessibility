@@ -36,3 +36,4 @@ coverage/
 variables.promptrek.yaml
 .venv/
 .mcp.json
+.amazonq/
